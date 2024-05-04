@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laboratorymodule/bottomnavigation.dart';
 
 class signout extends StatelessWidget {
   const signout({super.key});
@@ -191,6 +192,7 @@ class signout extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: bottomnavigation(),
     );
   }
 }

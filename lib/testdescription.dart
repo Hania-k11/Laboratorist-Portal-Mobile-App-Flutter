@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laboratorymodule/bottomnavigation.dart';
 
 class testdescription extends StatelessWidget {
   const testdescription({super.key});
@@ -415,6 +416,7 @@ class testdescription extends StatelessWidget {
           ),
         ],
       ),
+      bottomNavigationBar: bottomnavigation(),
     );
   }
 }

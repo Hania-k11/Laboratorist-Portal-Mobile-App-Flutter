@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laboratorymodule/bottomnavigation.dart';
 import 'package:laboratorymodule/testdescription.dart';
 
 class tests extends StatelessWidget {
@@ -199,6 +200,7 @@ class tests extends StatelessWidget {
           )
         ],
       ),
+      bottomNavigationBar: bottomnavigation(),
     );
   }
 

@@ -1,15 +1,11 @@
-// ignore: file_names
-// ignore_for_file: prefer_const_constructors
+
 
 import 'package:flutter/material.dart';
 import 'package:laboratorymodule/login.dart';
 
 class ProjectScreen extends StatelessWidget {
-  const ProjectScreen({super.key});
+  const ProjectScreen({Key? key});
 
-  //askari
-  //screen 1
-  //--------------------------
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,9 +20,16 @@ class ProjectScreen extends StatelessWidget {
           Align(
             alignment: Alignment.bottomCenter, // Keeps the button at the bottom center
             child: Container(
-              margin: EdgeInsets.fromLTRB(30, 50, 50, 260), // Adjusted to move the button up
+              margin: EdgeInsets.only(bottom: 320), // Adjusted to move the button up
               decoration: BoxDecoration(
-                color: Colors.blue,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.5), // Shadow color
+                    spreadRadius: 2, // Spread radius
+                    blurRadius: 2, // Blur radius
+                    offset: Offset(0, 3), // Offset
+                  ),
+                ],
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: TextButton(
@@ -37,9 +40,25 @@ class ProjectScreen extends StatelessWidget {
                   );
                   // Functionality here
                 },
-                child: Text(
-                  'Login as Laboratorist',
-                  style: TextStyle(fontSize: 16.0, color: Colors.white),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.blue),
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
+                  child: Text(
+                    'Login as Laboratorist',
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      color: Colors.white,
+                      fontFamily: 'Epilogue', // Font family
+                      fontWeight: FontWeight.bold, // Bold font weight
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -48,7 +67,4 @@ class ProjectScreen extends StatelessWidget {
       ),
     );
   }
-
 }
-
-

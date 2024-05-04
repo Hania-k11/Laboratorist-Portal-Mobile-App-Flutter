@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:laboratorymodule/bottomnavigation.dart';
 
 class viewreport extends StatelessWidget {
   const viewreport({Key? key});
@@ -14,17 +15,17 @@ class viewreport extends StatelessWidget {
           children: [
             Positioned(
               left: 17,
-              top: 6,
+              top: 40,
               child: CircleAvatar(
-                radius: 20,
-                backgroundImage: AssetImage('assets/images/Group 85.png'),
+                radius: 25,
+                backgroundImage: AssetImage('assets/images/avatarfemale.png'),
               ),
             ),
             Positioned(
               right: 3,
-              top: 9,
+              top: 40,
               child: IconButton(
-                splashRadius: 29,
+                splashRadius: 35,
                 onPressed: () {},
                 icon: Image.asset(
                   'assets/images/heart.png',
@@ -100,7 +101,7 @@ class viewreport extends StatelessWidget {
                   Visibility(
                     visible: _reportId.isEmpty,
                     child: Positioned(
-                      left: 10,
+                      left: 15,
                       top: 11,
                       child: Text(
                         'Report ID',
@@ -166,48 +167,9 @@ class viewreport extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-            left: 0,
-            bottom: 0,
-            child: Container(
-              width: 420,
-              height: 50,
-              decoration: BoxDecoration(
-                color: Color(0xFF007FFF),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.25),
-                    offset: Offset(0, 4),
-                    blurRadius: 4,
-                  ),
-                ],
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  _buildIcon('assets/images/1.png'),
-                  _buildIcon('assets/images/2.png.png'),
-                  _buildIcon('assets/images/3.png'),
-                  _buildIcon('assets/images/4.png'),
-                ],
-              ),
-            ),
-          ),
         ],
       ),
-    );
-  }
-
-  Widget _buildIcon(String imagePath) {
-    return IconButton(
-      onPressed: () {
-        // Add your onPressed logic here
-      },
-      icon: Image.asset(
-        imagePath,
-        width: 30,
-        height: 25,
-      ),
+      bottomNavigationBar: bottomnavigation(),
     );
   }
 }
