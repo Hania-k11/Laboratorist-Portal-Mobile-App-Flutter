@@ -83,12 +83,13 @@ class dashboard extends StatelessWidget {
                         onPressed: () {
                           // Add your onPressed logic here
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => tests()),
+                            context,
+                            MaterialPageRoute(builder: (context) => tests()),
                           );
                         },
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(Colors.transparent),
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.transparent),
                           padding: MaterialStateProperty.all(EdgeInsets.zero),
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
@@ -108,11 +109,13 @@ class dashboard extends StatelessWidget {
                           // Add your onPressed logic here
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => viewreport()),
+                            MaterialPageRoute(
+                                builder: (context) => viewreport()),
                           );
                         },
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(Colors.transparent),
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.transparent),
                           padding: MaterialStateProperty.all(EdgeInsets.zero),
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
