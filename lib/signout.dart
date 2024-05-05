@@ -2,193 +2,118 @@ import 'package:flutter/material.dart';
 import 'package:laboratorymodule/bottomnavigation.dart';
 
 class signout extends StatelessWidget {
-  const signout({super.key});
+  final String name;
+  final String email;
+  final int age;
+  final String gender;
+  final String workinghours;
+  final String shifttimmming;
+  const signout(
+      {required this.name,
+      required this.email,
+      required this.age,
+      required this.gender,
+      required this.workinghours,
+      required this.shifttimmming,
+      super.key});
 
 //simra
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Container(
-        width: 360,
-        height: 800,
-        decoration: BoxDecoration(
-          color: Color.fromRGBO(255, 255, 255, 1),
-        ),
         child: Stack(
-          children: <Widget>[
-            Positioned(
-              top: 240,
-              left: 115,
-              child: Text(
-                'haniakhan@gmail.com',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color.fromRGBO(0, 0, 0, 1),
-                  fontFamily: 'Poppins',
-                  fontSize: 14,
-                  letterSpacing: 0,
-                  fontWeight: FontWeight.normal,
-                  height: 1,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  child: Stack(
+                    children: <Widget>[
+                      Container(
+                        padding: const EdgeInsets.fromLTRB(25, 90, 0, 0),
+                        alignment: Alignment.topCenter,
+                        child: Stack(
+                          children: [
+                            Image.asset(
+                              height: 200,
+                              width: 200,
+                              'assets/images/Group 85.png',
+                              fit: BoxFit.cover,
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      Container(
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.fromLTRB(65, 0, 0, 230),
+                        child: Text(
+                          "$name",
+                          style: const TextStyle(
+                              fontSize: 20,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Container(
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.fromLTRB(40, 0, 0, 215),
+                          child: Text(
+                            "\n$email",
+                            style: TextStyle(fontFamily: 'Poppins'),
+                          )),
+                      Container(
+                        alignment: Alignment.center,
+                        child: Stack(
+                          children: [
+                            Text(
+                                "\n\nGender :\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t $gender",
+                                style: const TextStyle(fontFamily: 'Poppins')),
+                            Text(
+                                "\n\n\n\nAge :\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t $age",
+                                style: const TextStyle(fontFamily: 'Poppins')),
+                            Text(
+                                "\n\n\n\n\n\nShift Timmings :\t\t\t $shifttimmming",
+                                style: const TextStyle(fontFamily: 'Poppins')),
+                            Text(
+                                "\n\n\n\n\n\n\n\nWorking Hours :\t\t\t\t $workinghours",
+                                style: const TextStyle(fontFamily: 'Poppins')),
+                          ],
+                        ),
+                      ),
+                      Container(
+                          alignment: Alignment.bottomCenter,
+                          padding: const EdgeInsets.fromLTRB(60, 0, 0, 150),
+                          child: Stack(
+                            children: [
+                              Image.asset(
+                                height: 30,
+                                width: 30,
+                                'assets/images/logout.png',
+                                fit: BoxFit.cover,
+                              ),
+                              Container(
+                                  padding: EdgeInsets.only(left: 35),
+                                  child: const Text(
+                                    "SignOut",
+                                    style: TextStyle(
+                                        color: Color.fromRGBO(0, 127, 255, 1),
+                                        fontFamily: 'Rubik',
+                                        fontSize: 23,
+                                        fontWeight: FontWeight.bold),
+                                  ))
+                            ],
+                          ))
+                    ],
+                  ),
                 ),
-              ),
+              ],
             ),
-            Positioned(
-              top: 200,
-              left: 85,
-              child: Text(
-                'Hania Khan',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color.fromRGBO(0, 0, 0, 1),
-                  fontFamily: 'Poppins',
-                  fontSize: 40,
-                  letterSpacing: 0,
-                  fontWeight: FontWeight.bold,
-                  height: 1,
-                ),
-              ),
-            ),
-            Positioned(
-                top: 497,
-                left: 153,
-                child: Text(
-                  'Sign Out',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Color.fromRGBO(0, 127, 255, 1),
-                      fontFamily: 'Lato',
-                      fontSize: 30,
-                      letterSpacing: 0,
-                      fontWeight: FontWeight.bold,
-                      height: 1),
-                )),
-            Positioned(
-                top: 350,
-                left: 32,
-                child: Text(
-                  'Shift Timmings:',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Color.fromRGBO(0, 0, 0, 1),
-                      fontFamily: 'Poppins',
-                      fontSize: 15,
-                      letterSpacing: 0,
-                      fontWeight: FontWeight.normal,
-                      height: 1),
-                )),
-            Positioned(
-                top: 300,
-                left: 32,
-                child: Text(
-                  'Gender:',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Color.fromRGBO(0, 0, 0, 1),
-                      fontFamily: 'Poppins',
-                      fontSize: 15,
-                      letterSpacing: 0,
-                      fontWeight: FontWeight.normal,
-                      height: 1),
-                )),
-            Positioned(
-                top: 300,
-                left: 190,
-                child: Text(
-                  'Female',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Color.fromRGBO(0, 0, 0, 1),
-                      fontFamily: 'Poppins',
-                      fontSize: 18,
-                      letterSpacing: 0,
-                      fontWeight: FontWeight.normal,
-                      height: 1),
-                )),
-            Positioned(
-                top: 325,
-                left: 32,
-                child: Text(
-                  'Age:',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Color.fromRGBO(0, 0, 0, 1),
-                      fontFamily: 'Poppins',
-                      fontSize: 15,
-                      letterSpacing: 0,
-                      fontWeight: FontWeight.normal,
-                      height: 1),
-                )),
-            Positioned(
-                top: 325,
-                left: 190,
-                child: Text(
-                  '21',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Color.fromRGBO(0, 0, 0, 1),
-                      fontFamily: 'Poppins',
-                      fontSize: 18,
-                      letterSpacing: 0,
-                      fontWeight: FontWeight.normal,
-                      height: 1),
-                )),
-            Positioned(
-                top: 375,
-                left: 32,
-                child: Text(
-                  'Working days:',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Color.fromRGBO(0, 0, 0, 1),
-                      fontFamily: 'Poppins',
-                      fontSize: 15,
-                      letterSpacing: 0,
-                      fontWeight: FontWeight.normal,
-                      height: 1),
-                )),
-            Positioned(
-                top: 350,
-                left: 190,
-                child: Text(
-                  '9am-5pm',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Color.fromRGBO(0, 0, 0, 1),
-                      fontFamily: 'Poppins',
-                      fontSize: 18,
-                      letterSpacing: 0,
-                      fontWeight: FontWeight.normal,
-                      height: 1),
-                )),
-            Positioned(
-                top: 375,
-                left: 190,
-                child: Text(
-                  'Monday-Thursday',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Color.fromRGBO(0, 0, 0, 1),
-                      fontFamily: 'Poppins',
-                      fontSize: 18,
-                      letterSpacing: 0,
-                      fontWeight: FontWeight.normal,
-                      height: 1),
-                )),
-            Positioned(
-                top: 50,
-                left: 110,
-                child: Container(
-                  child: Image.asset(
-                      height: 150, width: 150, 'assets/images/avatarfemale.png'),
-                )),
-            Positioned(
-                top: 485,
-                left: 100,
-                child: Container(
-                  child: Image.asset(
-                      height: 50, width: 50, 'assets/images/logout.png'),
-                ))
           ],
         ),
       ),

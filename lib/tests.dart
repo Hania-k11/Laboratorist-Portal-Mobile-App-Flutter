@@ -2,19 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:laboratorymodule/bottomnavigation.dart';
 import 'package:laboratorymodule/testdescription.dart';
 
+List<String> test = [
+  "Thyroid-Stimulating Hormone (TSH)",
+  "Thyroglobulin Antibodies (TgAb)",
+  "Thyroid Peroxidase Antibodies (TPOAb)",
+  "Triiodothyronine (T3)",
+  "Thyroxine (T4)"
+];
+
 class tests extends StatelessWidget {
   const tests({super.key});
 //1
   //haniascreen
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         backgroundColor: Colors.white,
-
         leading: const Padding(
           padding: EdgeInsets.only(left: 9.0), // Adjust the padding here
           child: CircleAvatar(
@@ -34,11 +39,7 @@ class tests extends StatelessWidget {
           ),
         ],
       ),
-
-
-
       body: Column(
-
         children: [
           const SizedBox(height: 15),
           Container(
@@ -60,14 +61,9 @@ class tests extends StatelessWidget {
               _buildRoundButton('Remaining'),
               const SizedBox(width: 2),
             ],
-
-
-
           ),
           const SizedBox(height: 20),
-
           Expanded(
-
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               // Adjust horizontal padding as needed
@@ -88,41 +84,43 @@ class tests extends StatelessWidget {
                           const Row(
                             children: [
                               CircleAvatar(
-                                backgroundImage:
-                                AssetImage('assets/images/avatarfemale.png'),
+                                backgroundImage: AssetImage(
+                                    'assets/images/avatarfemale.png'),
                               ),
                               SizedBox(width: 20.0),
-                              Text(  'Hania Khan',
+                              Text(
+                                'Hania Khan',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'Epilogue',
                                   color: Color(0xff573926),
-                                  fontSize: 20.0, // Choose your desired size. This sets the font size to 24.0
+                                  fontSize:
+                                      20.0, // Choose your desired size. This sets the font size to 24.0
                                 ),
                               )
                             ],
                           ),
                           const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 59.0), // Adjust vertical padding as needed
-                            child: Text('Thyroid Test',  style: TextStyle(
-                              fontFamily: 'Poppins', // Your specified font family
-                              color: Color(0xff573926), // Your specified color
-                              fontSize: 15.0, // Your specified font size
-                            ),
+                            padding: EdgeInsets.symmetric(
+                                horizontal:
+                                    59.0), // Adjust vertical padding as needed
+                            child: Text(
+                              'Thyroid Test',
+                              style: TextStyle(
+                                fontFamily:
+                                    'Poppins', // Your specified font family
+                                color:
+                                    Color(0xff573926), // Your specified color
+                                fontSize: 15.0, // Your specified font size
+                              ),
                             ),
                           ),
-
-
                           const SizedBox(height: 8.0),
                           const Divider(
                             color: Color(0xFF42A99E),
                             thickness: 2.0,
                           ),
                           const SizedBox(height: 8.0),
-
-
-
-
                           const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -147,7 +145,6 @@ class tests extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-
                               TextButton(
                                 onPressed: () {
                                   // Add onPressed functionality here
@@ -174,20 +171,26 @@ class tests extends StatelessWidget {
                                     // Define what happens when the button is pressed
                                     Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => testdescription()),
+                                      MaterialPageRoute(
+                                          builder: (context) => testdescription(
+                                              name: 'Zainab Rauf',
+                                              age: 19,
+                                              gender: 'Female',
+                                              dateofTest: '18/7/24',
+                                              test: test)),
                                     );
                                   },
                                   child: const Text(
                                     'View Detail',
                                     style: TextStyle(
-                                      fontFamily: 'Epilogue',// Specifies the font family
+                                      fontFamily:
+                                          'Epilogue', // Specifies the font family
                                       color: Color(0xFF595461),
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 17.0,// Sets the font color using the hex code
+                                      fontSize:
+                                          17.0, // Sets the font color using the hex code
                                     ),
-                                  )
-                              )
-
+                                  ))
                             ],
                           ),
                         ],
@@ -203,7 +206,6 @@ class tests extends StatelessWidget {
       bottomNavigationBar: bottomnavigation(),
     );
   }
-
 
   Widget _buildRoundButton(String text) {
     return Container(
