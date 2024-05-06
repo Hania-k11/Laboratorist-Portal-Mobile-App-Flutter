@@ -49,7 +49,14 @@ class bottomnavigation extends StatelessWidget {
             _buildIconButton(() {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => signout()),
+                MaterialPageRoute(
+                    builder: (context) => signout(
+                        name: 'Hania Khan',
+                        email: 'haniakhan@gmail.com',
+                        age: 19,
+                        gender: 'Female',
+                        workinghours: '9am - 5pm',
+                        shifttimmming: "Monday - Thursday")),
               );
             }, 'assets/images/profileicon.png'),
           ],
