@@ -20,40 +20,34 @@ class testdescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        leading: const Padding(
+          padding: EdgeInsets.only(left: 9.0), // Adjust the padding here
+          child: CircleAvatar(
+            radius: 20, // Adjust the size here
+            backgroundImage: AssetImage('assets/images/avatarfemale.png'),
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Image.asset(
+              'assets/images/heart.png',
+              width: 40,
+              height: 40,
+            ),
+            iconSize: 40,
+          ),
+        ],
+      ),
       backgroundColor: Colors.white,
       body: Container(
         child: Stack(
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                  child: Stack(
-                    children: <Widget>[
-                      Container(
-                        padding: const EdgeInsets.fromLTRB(20, 125, 0, 0),
-                        child: Image.asset(
-                          height: 50,
-                          width: 50,
-                          'assets/images/Group 85.png',
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.fromLTRB(300, 100, 0, 0),
-                        child: Image.asset(
-                          height: 100,
-                          width: 100,
-                          'assets/images/heart.png',
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
             Container(
               alignment: Alignment.topCenter,
-              margin: const EdgeInsets.only(top: 200),
+              margin: const EdgeInsets.only(top: 0),
               child: const Text(
                 "Thyroid Function Tests (TFTs)",
                 style: TextStyle(
@@ -78,9 +72,9 @@ class testdescription extends StatelessWidget {
                                 child: Stack(
                                   children: [
                                     Container(
-                                      width: 300,
-                                      height: 480,
-                                      margin: const EdgeInsets.only(top: 130),
+                                      width: 380,
+                                      height: 650,
+                                      margin: const EdgeInsets.only(top: 10),
                                       decoration: BoxDecoration(
                                         color:
                                         const Color.fromRGBO(141, 219, 242, 1),
@@ -88,8 +82,8 @@ class testdescription extends StatelessWidget {
                                           BoxShadow(
                                             color: Colors.black.withOpacity(0.8),
                                             offset: const Offset(1, 1),
-                                            blurRadius: 12,
-                                            spreadRadius: -12,
+                                            blurRadius: 2,
+                                            spreadRadius: 0.2,
                                           ),
                                         ],
                                       ),
@@ -98,7 +92,7 @@ class testdescription extends StatelessWidget {
                                       width: 160,
                                       height: 35,
                                       margin:
-                                      const EdgeInsets.fromLTRB(25, 140, 0, 0),
+                                      const EdgeInsets.fromLTRB(25, 30, 0, 0),
                                       alignment: Alignment.center,
                                       decoration: BoxDecoration(
                                         color:
@@ -122,12 +116,12 @@ class testdescription extends StatelessWidget {
                                       ),
                                     ),
                                     Container(
-                                      width: 250,
-                                      height: 150,
+                                      width: 320,
+                                      height: 180,
                                       alignment: Alignment.centerLeft,
                                       padding: const EdgeInsets.only(left: 10),
                                       margin:
-                                      const EdgeInsets.fromLTRB(25, 188, 0, 0),
+                                      const EdgeInsets.fromLTRB(25, 85, 0, 0),
                                       decoration: BoxDecoration(
                                         color:
                                         const Color.fromRGBO(255, 255, 255, 1),
@@ -167,7 +161,7 @@ class testdescription extends StatelessWidget {
                                       width: 160,
                                       height: 35,
                                       margin:
-                                      const EdgeInsets.fromLTRB(25, 350, 0, 0),
+                                      const EdgeInsets.fromLTRB(25, 290, 0, 0),
                                       alignment: Alignment.center,
                                       decoration: BoxDecoration(
                                         color:
@@ -191,10 +185,10 @@ class testdescription extends StatelessWidget {
                                       ),
                                     ),
                                     Container(
-                                      width: 250,
-                                      height: 170,
+                                      width: 320,
+                                      height: 280,
                                       margin:
-                                      const EdgeInsets.fromLTRB(25, 400, 0, 0),
+                                      const EdgeInsets.fromLTRB(25, 350, 0, 0),
                                       decoration: BoxDecoration(
                                         color:
                                         const Color.fromRGBO(255, 254, 254, 1),
