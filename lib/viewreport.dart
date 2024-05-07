@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laboratorymodule/bottomnavigation.dart';
+import 'package:laboratorymodule/report.dart';
 
 class viewreport extends StatelessWidget {
   const viewreport({Key? key});
@@ -142,6 +143,11 @@ class viewreport extends StatelessWidget {
               height: 45,
               child: ElevatedButton(
                 onPressed: () {
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => report()),
+                  );
                   // Add your onPressed logic here
                 },
                 style: ButtonStyle(
