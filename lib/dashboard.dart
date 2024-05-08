@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:laboratorymodule/apifunctions.dart';
+import 'package:laboratorymodule/bottomnavigation.dart';
 import 'package:laboratorymodule/tests.dart';
 import 'package:laboratorymodule/viewreport.dart';
 
@@ -74,6 +76,7 @@ class dashboard extends StatelessWidget {
                   height: 600,
                   fit: BoxFit.cover,
                 ),
+
                 Positioned(
                   top: 215,
                   left: 50,
@@ -106,12 +109,15 @@ class dashboard extends StatelessWidget {
                       SizedBox(width: 110),
                       TextButton(
                         onPressed: () {
+
+                          fetch();
+
                           // Add your onPressed logic here
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => viewreport()),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //       builder: (context) => viewreport()),
+                          // );
                         },
                         style: ButtonStyle(
                           backgroundColor:
@@ -137,6 +143,7 @@ class dashboard extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: bottomnavigation(),
     );
   }
 }
