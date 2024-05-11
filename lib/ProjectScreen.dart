@@ -1,7 +1,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:laboratorymodule/login.dart';
+import 'package:laboratorymodule/Login.dart';
 
 class ProjectScreen extends StatelessWidget {
   const ProjectScreen({Key? key});
@@ -34,9 +34,10 @@ class ProjectScreen extends StatelessWidget {
               ),
               child: TextButton(
                 onPressed: () {
+
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const login()), // Navigate to Login screen
+                    MaterialPageRoute(builder: (context) => const Login()), // Navigate to Login screen
                   );
                   // Functionality here
                 },

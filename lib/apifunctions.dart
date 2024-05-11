@@ -9,9 +9,7 @@ Future<void> fetch() async {
   //final visit = Visit(doctorid: doctorid, date: date);
   final response = await http.get(
     url,
-    headers: {'Content-Type': 'application/json'},
-
-  );
+    headers: {'Content-Type': 'application/json'},);
 
   if (response.statusCode == 200) {
     List jsonResponse = json.decode(response.body);
@@ -19,17 +17,31 @@ Future<void> fetch() async {
   } else {
     throw Exception('Failed to load data');
   }
-
-
-
-
 }
+
+//http://192.168.100.6:8000/getallhospitals/
+Future<void> fetch_loginn() async {
+final url = Uri.parse('http://192.168.100.6:8000/getallLoginn/');
+  //final visit = Visit(doctorid: doctorid, date: date);
+
+  final response = await http.get(url, headers: {'Content-Type': 'application/json'},);
+  if (response.statusCode == 200) {
+    List jsonResponse = json.decode(response.body);
+
+    print(jsonResponse.toString());
+
+  } else {
+  throw Exception('Failed to load data');
+  }
+}
+
 
 
 Future<void> fetchDataAndDisplay() async {
   // Replace 'https://api.example.com/data' with the URL of your API endpoint
-  var url = Uri.parse('https://10.133.136.71:8000/getallhospitals');
+  var url = Uri.parse('http://192.168.100.6:8000//getallLoginn/');
 
+  print("hiii");
   try {
     // Send a GET request to the API endpoint
     var response = await HttpClient().getUrl(url);

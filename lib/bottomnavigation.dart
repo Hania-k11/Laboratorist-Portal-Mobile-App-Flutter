@@ -31,7 +31,7 @@ class bottomnavigation extends StatelessWidget {
             _buildIconButton(() {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => dashboard()),
+                MaterialPageRoute(builder: (context) => Dashboard()),
               );
             }, 'assets/images/homeicon.png'),
             _buildIconButton(() {
