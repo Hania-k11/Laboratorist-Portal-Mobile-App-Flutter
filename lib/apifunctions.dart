@@ -7,9 +7,24 @@ var ip = "192.168.100.6";
 Future<void> fetch() async {
   final url = Uri.parse('http://192.168.100.6:8000/getallhospitals/');
   //final visit = Visit(doctorid: doctorid, date: date);
-  final response = await http.get(
-    url,
-    headers: {'Content-Type': 'application/json'},);
+ // print("hania");
+  final response = await http.get(url, headers: {'Content-Type': 'application/json'},);
+  print(response.statusCode);
+  if (response.statusCode == 200) {
+    List jsonResponse = json.decode(response.body);
+    print(jsonResponse.toString());
+  } else {
+    throw Exception('Failed to load data');
+  }
+}
+
+Future<void> fetchy() async {
+  final url = Uri.parse('http://192.168.100.6:8000/getallhospitals/');
+  //final visit = Visit(doctorid: doctorid, date: date);
+  // print("hania");
+  final response = await http.get(url, headers: {'Content-Type': 'application/json'},);
+
+  print(response.statusCode);
 
   if (response.statusCode == 200) {
     List jsonResponse = json.decode(response.body);
@@ -18,6 +33,24 @@ Future<void> fetch() async {
     throw Exception('Failed to load data');
   }
 }
+
+Future<void> get_labo() async {
+  final url = Uri.parse('http://192.168.100.6:8000/getalllabo/');
+  //final visit = Visit(doctorid: doctorid, date: date);
+  final response = await http.get(
+    url,
+    headers: {'Content-Type': 'application/json'},);
+
+  print ("jjjjjjjj");
+  print(response.statusCode);
+  if (response.statusCode == 200) {
+    List jsonResponse = json.decode(response.body);
+    print(jsonResponse.toString());
+  } else {
+    throw Exception('Failed to load data');
+  }
+}
+
 
 //http://192.168.100.6:8000/getallhospitals/
 Future<void> fetch_loginn() async {

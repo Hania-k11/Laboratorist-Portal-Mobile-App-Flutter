@@ -7,8 +7,8 @@ import 'package:http/http.dart' as http;
 class Login extends StatelessWidget {
   const Login({Key? key});
 
-  Future<void> fetch_login(BuildContext context, String email, String password, String name) async {
-    final url = Uri.parse('http://192.168.100.6:8000/getallLoginn/');
+  Future<void> fetch_login(BuildContext context, String email, String password, String laboratistname) async {
+    final url = Uri.parse('http://192.168.100.6:8000/getallLaboratorist/');
 
     final response = await http.get(url, headers: {'Content-Type': 'application/json'});
 
@@ -20,7 +20,7 @@ class Login extends StatelessWidget {
       // Print the fetched users for debugging
       print(users);
       users.forEach((user) {
-        print('Name: ${user['name']}');
+        print('Name: ${user['laboratistname']}');
         print('Email: ${user['email']}');
         print('Password: ${user['password']}');
       });
@@ -68,7 +68,7 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     String email = '';
     String password = '';
-    String name = '';
+    String laboratistname = '';
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -117,10 +117,10 @@ class Login extends StatelessWidget {
                 elevation: 7,
               ),
 
-                //BUTTTOONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN!!!!!!!!!!!!!!
+              //BUTTTOONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN!!!!!!!!!!!!!!
 
               onPressed: () {
-                fetch_login(context, email, password, name);
+                fetch_login(context, email, password, laboratistname);
               },
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
