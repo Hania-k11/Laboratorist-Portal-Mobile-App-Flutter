@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:laboratorymodule/bottomnavigation.dart';
 
+
 class signout extends StatelessWidget {
-  final String name;
+  final String userName;
   final String email;
   final int age;
   final String gender;
-  final String workinghours;
+  final String workingdays;
   final String shifttimmming;
-  const signout(
-      {required this.name,
-      required this.email,
-      required this.age,
-      required this.gender,
-      required this.workinghours,
-      required this.shifttimmming,
-      super.key});
 
-//simra
+
+  const signout({Key? key, required this.userName,
+    required this.email,
+    required this.age,
+    required this.gender,
+    required this.workingdays,
+    required this.shifttimmming,}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class signout extends StatelessWidget {
                         alignment: Alignment.center,
                         padding: const EdgeInsets.fromLTRB(65, 0, 0, 230),
                         child: Text(
-                          "$name",
+                          "$userName",
                           style: const TextStyle(
                               fontSize: 20,
                               fontFamily: 'Poppins',
@@ -73,7 +73,7 @@ class signout extends StatelessWidget {
                           children: [
                             Text(
                                 "\n\nGender :\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t $gender",
-                                style: const TextStyle(fontFamily: 'Poppins')),
+                                style: const TextStyle(fontFamily: 'Poppins',fontSize: 20)),
                             Text(
                                 "\n\n\n\nAge :\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t $age",
                                 style: const TextStyle(fontFamily: 'Poppins')),
@@ -81,7 +81,7 @@ class signout extends StatelessWidget {
                                 "\n\n\n\n\n\nShift Timmings :\t\t\t $shifttimmming",
                                 style: const TextStyle(fontFamily: 'Poppins')),
                             Text(
-                                "\n\n\n\n\n\n\n\nWorking Hours :\t\t\t\t $workinghours",
+                                "\n\n\n\n\n\n\n\nWorking Days :\t\t\t\t $workingdays",
                                 style: const TextStyle(fontFamily: 'Poppins')),
                           ],
                         ),
@@ -117,7 +117,7 @@ class signout extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: bottomnavigation(),
+      bottomNavigationBar: BottomNavigation(userName: userName),
     );
   }
 }

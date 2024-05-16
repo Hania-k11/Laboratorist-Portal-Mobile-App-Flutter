@@ -11,7 +11,8 @@ List<String> test = [
 ];
 
 class tests extends StatelessWidget {
-  const tests({super.key});
+  final String userName;
+  const tests({Key? key, required this.userName}) : super(key: key);
 //1
   //haniascreen
 
@@ -173,7 +174,7 @@ class tests extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => testdescription(
-                                              name: 'Zainab Rauf',
+                                              userName: '$userName',
                                               age: 19,
                                               gender: 'Female',
                                               dateofTest: '18/7/24',
@@ -203,7 +204,7 @@ class tests extends StatelessWidget {
           )
         ],
       ),
-      bottomNavigationBar: bottomnavigation(),
+      bottomNavigationBar: BottomNavigation(userName: userName,),
     );
   }
 

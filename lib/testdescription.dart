@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:laboratorymodule/bottomnavigation.dart';
 
 class testdescription extends StatelessWidget {
-  final String name;
+  final String userName;
   final int age;
   final String gender;
   final String dateofTest;
   final List<String> test;
+
   const testdescription(
-      {required this.name,
+      {required this.userName,
         required this.age,
         required this.gender,
         required this.dateofTest,
@@ -138,7 +139,7 @@ class testdescription extends StatelessWidget {
                                       child: Stack(
                                         children: [
                                           Text(
-                                            "Name :\t\t\t\t\t\t\t\t\t\t\t\t\t\t ${name}",
+                                            "Name :\t\t\t\t\t\t\t\t\t\t\t\t\t\t ${userName}",
                                             style: const TextStyle(
                                                 fontFamily: 'Poppins'),
                                           ),
@@ -228,7 +229,7 @@ class testdescription extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: bottomnavigation(),
+      bottomNavigationBar: BottomNavigation(userName: userName),
     );
   }
 }

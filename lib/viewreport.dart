@@ -3,7 +3,9 @@ import 'package:laboratorymodule/bottomnavigation.dart';
 import 'package:laboratorymodule/report.dart';
 
 class viewreport extends StatelessWidget {
-  const viewreport({Key? key});
+  final String userName;
+
+  const viewreport({Key? key, required this.userName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -175,7 +177,7 @@ class viewreport extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: bottomnavigation(),
+      bottomNavigationBar: BottomNavigation(userName: userName),
     );
   }
 }

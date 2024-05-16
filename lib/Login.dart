@@ -4,13 +4,56 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 
+
 class Login extends StatelessWidget {
   const Login({Key? key});
+ // final TextEditingController _nameController = TextEditingController();
+//  TextEditingController passwordController = TextEditingController();
 
-  Future<void> fetch_login(BuildContext context, String email, String password, String laboratistname) async {
-    final url = Uri.parse('http://192.168.100.6:8000/getallLaboratorist/');
+  Future<bool> authorization (String emailaddress, String password) async {
+    print(emailaddress);
+    print(password);
+    print('in authorization 1');
+    final url = Uri.parse('http://10.133.137.133:8000/logininfo/$emailaddress');
+
+    final Map<String, String> headers = {'Content-Type': 'application/json'};
+    final response = await http.get(
+      url,
+      headers: headers,
+    );
+    print('in authorization 2');
+
+
+    if (response.statusCode == 200) {
+
+      Map<String, dynamic> jsonData = json.decode(response.body);
+      if(jsonData.isNotEmpty){
+        String email = jsonData['email'];
+        String passwords = jsonData['password'];
+        //userid = jsonData['PatientId'];
+        print(email);
+        print(password);
+       // print(userid);
+        return email == emailaddress && passwords == password;
+      }
+      else{
+        return false;
+      }
+
+    } else {
+      // Failed to fetch data from the API
+      return false;
+
+    }
+
+  }
+
+  Future<void> fetch_login(BuildContext context, String email, String password, String laboratistname, String gender, ) async {
+    final url = Uri.parse('http://10.133.137.133:8000/getallLaboratoristt/');
 
     final response = await http.get(url, headers: {'Content-Type': 'application/json'});
+
+    print(response.statusCode);
 
     if (response.statusCode == 200) {
       List<dynamic> users = json.decode(response.body);
@@ -27,19 +70,25 @@ class Login extends StatelessWidget {
       print(response.body);
 
 
+
+
       // Check if any user matches the entered email and password
-      bool isUserAuthenticated = users.any((user) =>
-      user['email'] == email && user['password'] == password );
+      // Find the user's name based on email and password
+      var user = users.firstWhere(
+            (user) => user['email'] == email && user['password'] == password,
+        orElse: () => null,
+      );
 
+      if (user != null) {
+        // If user found, extract the name
+        final String userName = user['laboratistname'];
 
-      // Print the authentication result for debugging
-      print('Authentication Result: $isUserAuthenticated');
-
-      if (isUserAuthenticated) {
-        // Navigate to the dashboard screen
+        // Navigate to the dashboard screen with the user's name
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const Dashboard()),
+          MaterialPageRoute(
+            builder: (context) => Dashboard(userName: userName),
+          ),
         );
       } else {
         // Display an error message
@@ -120,8 +169,20 @@ class Login extends StatelessWidget {
               //BUTTTOONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN!!!!!!!!!!!!!!
 
               onPressed: () {
-                fetch_login(context, email, password, laboratistname);
-              },
+                print(email);
+               fetch_login(context, email, password, laboratistname);
+              // print(email);
+               //print(password);
+            // var auth = authorization(email,password);;
+
+
+             // if(auth == true ){
+             //   print('you are good to go');
+             // }
+             // else
+             //   print('fuck u');
+             //
+               },
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(

@@ -4,8 +4,11 @@ import 'package:laboratorymodule/signout.dart';
 import 'package:laboratorymodule/tests.dart';
 import 'package:laboratorymodule/viewreport.dart';
 
-class bottomnavigation extends StatelessWidget {
-  const bottomnavigation({Key? key}) : super(key: key);
+class BottomNavigation extends StatelessWidget {
+  final String userName;
+
+
+  const BottomNavigation({Key? key, required this.userName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,19 +34,21 @@ class bottomnavigation extends StatelessWidget {
             _buildIconButton(() {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Dashboard()),
+                  MaterialPageRoute(
+                  builder: (context) => Dashboard(userName: userName),
+                  ),
               );
             }, 'assets/images/homeicon.png'),
             _buildIconButton(() {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => tests()),
+                MaterialPageRoute(builder: (context) => tests(userName: userName,)),
               );
             }, 'assets/images/testicon.png'),
             _buildIconButton(() {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => viewreport()),
+                MaterialPageRoute(builder: (context) => viewreport(userName: userName,)),
               );
             }, 'assets/images/reporticon.png'),
             _buildIconButton(() {
@@ -51,11 +56,11 @@ class bottomnavigation extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (context) => signout(
-                        name: 'Hania Khan',
+                        userName: '$userName',
                         email: 'haniakhan@gmail.com',
                         age: 19,
                         gender: 'Female',
-                        workinghours: '9am - 5pm',
+                        workingdays: '9am - 5pm',
                         shifttimmming: "Monday - Thursday")),
               );
             }, 'assets/images/profileicon.png'),

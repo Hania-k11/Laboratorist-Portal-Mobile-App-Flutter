@@ -5,7 +5,9 @@ import 'package:laboratorymodule/tests.dart';
 import 'package:laboratorymodule/viewreport.dart';
 
 class Dashboard extends StatelessWidget {
-  const Dashboard({Key? key});
+  final String userName;
+
+  const Dashboard({Key? key, required this.userName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +55,7 @@ class Dashboard extends StatelessWidget {
             ),
             SizedBox(height: 2),
             Text(
-              'Hania',
+              '$userName!',
               style: TextStyle(
                 fontSize: 20,
                 color: Colors.black,
@@ -87,7 +89,7 @@ class Dashboard extends StatelessWidget {
                           // Add your onPressed logic here
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => tests()),
+                            MaterialPageRoute(builder: (context) => tests(userName: userName,)),
                           );
                         },
                         style: ButtonStyle(
@@ -109,8 +111,12 @@ class Dashboard extends StatelessWidget {
                       SizedBox(width: 110),
                       TextButton(
                         onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => viewreport(userName: userName,)),
+                          );
 
-                          fetch();
+                         // fetch();
                          // fetch_login();
 
 
@@ -145,7 +151,7 @@ class Dashboard extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: bottomnavigation(),
+      bottomNavigationBar: BottomNavigation(userName: userName),
     );
   }
 }
