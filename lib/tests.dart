@@ -12,7 +12,9 @@ import 'package:laboratorymodule/testdescription.dart';
 //"Triiodothyronine (T3)",
 //"Thyroxine (T4)"
 //];
-
+var component1;
+var component2;
+var patientname;
 class tests extends StatelessWidget {
   final String userName;
   final String email;
@@ -102,8 +104,17 @@ class tests extends StatelessWidget {
                           itemCount: data.length,
                           itemBuilder: (BuildContext context, int index) {
                             final item = data[index];
+                            final testName = item['testname'];
+                            final patientName = item['patientname'];
+                            final patientAge = item['patientage'];
+                            final patientGender = item['patientgender'];
+                            final testDate = item['testdate'];
+                            final Component1 = item['component1'];
+                            final Component2 = item['component2'];
+                            final Component3 = item['component3'];
                             print(item['patientname']);
-                            var name = item['patientname'];
+                            patientname = item['patientname'];
+                            component1 = item['component1'];
 
                             return Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -123,7 +134,7 @@ class tests extends StatelessWidget {
                                               'assets/images/avatarfemale.png'),
                                         ),
                                         SizedBox(width: 20.0),
-                                        Text(name),
+                                        Text(patientname),
                                         // Text(
                                         //   name,
                                         //   style: TextStyle(
@@ -211,8 +222,11 @@ class tests extends StatelessWidget {
                                         //VIEW DETAIL BUTTON!!!!!!!
                                         TextButton(
                                             onPressed: () {
+
+
                                               // Define what happens when the button is pressed
                                               Navigator.push(
+
                                                   context,
                                                   MaterialPageRoute(
                                                     builder: (context) =>
@@ -221,10 +235,18 @@ class tests extends StatelessWidget {
                                                             email: email,
                                                             gender: gender,
                                                             age: age,
-                                                            shifttiming:
-                                                                shifttiming,
-                                                            workingdays:
-                                                                workingdays),
+                                                            shifttiming: shifttiming,
+                                                            workingdays: workingdays,
+                                                            testName: testName,
+                                                            patientName: patientName,
+                                                            patientAge: patientAge,
+                                                            patientGender: patientGender,
+                                                            testDate: testDate,
+                                                            Component1: Component1,
+                                                            Component2: Component2,
+                                                            Component3: Component3
+
+                                                           ),
                                                   ));
                                             },
                                             child: const Text(
@@ -246,6 +268,7 @@ class tests extends StatelessWidget {
                             );
                           },
                         ); //listview
+
                       } else {
                         // Display a loading indicator while fetching data
                         return CircularProgressIndicator();
@@ -312,6 +335,8 @@ Widget _buildRoundButton2(String text) {
     ),
     child: ElevatedButton(
       onPressed: () {},
+
+
       style: ElevatedButton.styleFrom(
         backgroundColor: const Color(0xFF007FFF),
         shape: RoundedRectangleBorder(

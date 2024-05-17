@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laboratorymodule/bottomnavigation.dart';
+import 'package:laboratorymodule/tests.dart';
 
 class testdescription extends StatelessWidget {
   final String userName;
@@ -8,6 +9,14 @@ class testdescription extends StatelessWidget {
   final int age;
   final String shifttiming;
   final String workingdays;
+  final String testName;
+  final String patientName;
+  final String patientAge;
+  final String patientGender;
+  final String testDate;
+  final String Component1;
+  final String Component2;
+  final String Component3;
 
 
   const testdescription(
@@ -17,8 +26,16 @@ class testdescription extends StatelessWidget {
         required this.gender,
         required this.shifttiming,
         required this.workingdays,
+        required this.testName,
+        required this.patientName,
+        required this.patientAge,
+        required this.patientGender,
+        required this.testDate,
+        required this.Component1,
+        required this.Component2,
+        required this.Component3,
 
-        super.key});
+        super.key,   });
 
 //haseeb
 
@@ -46,6 +63,7 @@ class testdescription extends StatelessWidget {
           ),
         ],
       ),
+
       backgroundColor: Colors.white,
       body: Container(
         child: Stack(
@@ -53,8 +71,8 @@ class testdescription extends StatelessWidget {
             Container(
               alignment: Alignment.topCenter,
               margin: const EdgeInsets.only(top: 0),
-              child: const Text(
-                "Thyroid Function Tests (TFTs)",
+              child:  Text(
+                "$testName",
                 style: TextStyle(
                   color: Colors.black,
                   fontFamily: 'Rubik',
@@ -143,20 +161,20 @@ class testdescription extends StatelessWidget {
                                       child: Stack(
                                         children: [
                                           Text(
-                                            "Name :\t\t\t\t\t\t\t\t\t\t\t\t\t\t ${userName}",
+                                            "Name :\t\t\t\t\t\t\t\t\t\t\t\t\t\t $patientName",
                                             style: const TextStyle(
                                                 fontFamily: 'Poppins'),
                                           ),
                                           Text(
-                                              "\n\nAge :\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t ${age}",
+                                              "\n\nAge :\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t $patientAge",
                                               style: const TextStyle(
                                                   fontFamily: 'Poppins')),
                                           Text(
-                                              "\n\n\n\nGender :\t\t\t\t\t\t\t\t\t\t\t\t\t ${gender}",
+                                              "\n\n\n\nGender :\t\t\t\t\t\t\t\t\t\t\t\t\t $patientGender",
                                               style: const TextStyle(
                                                   fontFamily: 'Poppins')),
                                           Text(
-                                              "\n\n\n\n\n\nDate Of Test :\t\t\t date",
+                                              "\n\n\n\n\n\nDate Of Test :\t\t\t $testDate",
                                               style: const TextStyle(
                                                   fontFamily: 'Poppins')),
                                         ],
@@ -207,18 +225,44 @@ class testdescription extends StatelessWidget {
                                           ),
                                         ],
                                       ),
-                                      child: ListView.builder(
-                                          padding: const EdgeInsets.all(8),
-                                        //  itemCount: test.length,
-                                          itemBuilder:
-                                              (BuildContext context, int index) {
-                                            return Text(
-                                              "${email[index]}\n",
+                                      child:Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Align(
+                                            alignment: Alignment(-0.9, 0.0), // Adjust the x value as per your preference
+                                            child: Text(
+                                              '$Component1',
                                               style: const TextStyle(
-                                                  fontSize: 12,
-                                                  fontFamily: 'Poppins'),
-                                            );
-                                          }),
+                                                fontSize: 16,
+                                                fontFamily: 'Poppins',
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(height: 10),
+                                          Align(
+                                            alignment: Alignment(-0.9, 0.0), // Adjust the x value as per your preference
+                                            child: Text(
+                                              '$Component2',
+                                              style: const TextStyle(
+                                                fontSize: 16,
+                                                fontFamily: 'Poppins',
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(height: 10),
+                                          Align(
+                                            alignment: Alignment(-0.9, 0.0), // Adjust the x value as per your preference
+                                            child: Text(
+                                              '$Component3',
+                                              style: const TextStyle(
+                                                fontSize: 16,
+                                                fontFamily: 'Poppins',
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      )
+
                                     ),
                                   ],
                                 ),

@@ -145,6 +145,30 @@ Future<List< dynamic>> patient11() async {
   }
 }
 
+Future<List< dynamic>> completedTest() async {
+  print('completed test api function');
+  final url = Uri.parse('http://$ip:8000/completed-tests/');
+  final Map<String, String> headers = {'Content-Type': 'application/json'};
+  final response = await http.get(
+    url,
+    headers: headers,
+  );
+
+  print(response.body);
+  print(response.statusCode);
+
+  if (response.statusCode == 200) {
+
+    //  print(response.body);
+    List< dynamic> jsonData = json.decode(response.body);
+    //  print('jsonResponse: $jsonData['Age']');
+    return jsonData;
+  } else {
+
+    throw Exception('Failed to load data');
+  }
+}
+
 
 Future<List< dynamic>> patient00() async {
 print('in the appointment func');
