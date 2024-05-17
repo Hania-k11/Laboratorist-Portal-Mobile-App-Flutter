@@ -3,121 +3,80 @@ import 'package:laboratorymodule/dashboard.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:laboratorymodule/apifunctions.dart';
+
+//var ip = "192.168.18.5";
+
 
 
 class Login extends StatelessWidget {
-  const Login({Key? key});
- // final TextEditingController _nameController = TextEditingController();
-//  TextEditingController passwordController = TextEditingController();
 
-  Future<bool> authorization (String emailaddress, String password) async {
-    print(emailaddress);
-    print(password);
-    print('in authorization 1');
-    final url = Uri.parse('http://10.133.137.133:8000/logininfo/$emailaddress');
+  var emailaddress ='';
+ var password = '';
+ var  userName = '';
+  var  shifttiming = '';
+  var  workingdays = '';
+   var  gender;
+   var age ;
+
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  Future<bool>  authorization(String emails, String pass)
+  async {
+
+    print("function hoon");
+    final url = Uri.parse('http://$ip:8000/logininfo/$emails');
+    print (url);
 
     final Map<String, String> headers = {'Content-Type': 'application/json'};
-    final response = await http.get(
-      url,
-      headers: headers,
-    );
-    print('in authorization 2');
+    print("h");
 
-
+    try {
+      final response = await http.get(url, headers: headers);
+      print("Response status code: ${response.statusCode}");
+      print("Response body: ${response.body}");
+    //print(emailaddress);
+    //print(password);
     if (response.statusCode == 200) {
-
+      print("im here");
       Map<String, dynamic> jsonData = json.decode(response.body);
-      if(jsonData.isNotEmpty){
-        String email = jsonData['email'];
-        String passwords = jsonData['password'];
-        //userid = jsonData['PatientId'];
-        print(email);
-        print(password);
-       // print(userid);
-        return email == emailaddress && passwords == password;
-      }
-      else{
+      if (jsonData.isNotEmpty) {
+        emailaddress = jsonData['email'];
+        password = jsonData['password'];
+        userName = jsonData ['laboratistname'];
+        shifttiming = jsonData ['shifttiming'];
+        workingdays = jsonData ['workingdays'];
+        gender = jsonData ['gender'];
+        age = jsonData ['age'];
+      //  print(passwords);
+        //print(email);
+        //String gender = jsonData['gender']; // Assuming gender is a field in your database
+        return emailaddress == emails && password == pass;
+      } else {
+        print("No data found for the given email address.");
         return false;
       }
-
     } else {
-      // Failed to fetch data from the API
+      print("Failed to fetch data from the API. Status code: ${response.statusCode}");
       return false;
-
     }
-
-  }
-
-  Future<void> fetch_login(BuildContext context, String email, String password, String laboratistname, String gender, ) async {
-    final url = Uri.parse('http://10.133.137.133:8000/getallLaboratoristt/');
-
-    final response = await http.get(url, headers: {'Content-Type': 'application/json'});
-
-    print(response.statusCode);
-
-    if (response.statusCode == 200) {
-      List<dynamic> users = json.decode(response.body);
-
-
-
-      // Print the fetched users for debugging
-      print(users);
-      users.forEach((user) {
-        print('Name: ${user['laboratistname']}');
-        print('Email: ${user['email']}');
-        print('Password: ${user['password']}');
-      });
-      print(response.body);
-
-
-
-
-      // Check if any user matches the entered email and password
-      // Find the user's name based on email and password
-      var user = users.firstWhere(
-            (user) => user['email'] == email && user['password'] == password,
-        orElse: () => null,
-      );
-
-      if (user != null) {
-        // If user found, extract the name
-        final String userName = user['laboratistname'];
-
-        // Navigate to the dashboard screen with the user's name
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Dashboard(userName: userName),
-          ),
-        );
-      } else {
-        // Display an error message
-        showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: Text('Error'),
-            content: Text('Incorrect email or password'),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text('OK'),
-              ),
-            ],
-          ),
-        );
-      }
-    } else {
-      // Handle error if unable to fetch data from the server
-      throw Exception('Failed to load data');
+    } catch (e) {
+      print("An error occurred while making the HTTP request: $e");
+      return false;
     }
   }
 
 
   @override
   Widget build(BuildContext context) {
-    String email = '';
-    String password = '';
-    String laboratistname = '';
+   // // String email = '';
+   //  //String password = '';
+   //  //String userName = '';
+   //  String gender = '';
+   //  int age = 0;
+   //  String shifttiming = '';
+   //  String workingdays = '';
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -131,29 +90,32 @@ class Login extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               child: TextField(
+                controller: _nameController,
                 decoration: InputDecoration(
                   labelText: 'Email',
                   border: OutlineInputBorder(),
                   suffixIcon: Icon(Icons.email, color: Colors.grey),
                 ),
                 keyboardType: TextInputType.emailAddress,
-                onChanged: (value) => email = value,
+               // onChanged: (value) => email = value,
               ),
             ),
             SizedBox(height: 10),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               child: TextField(
+                controller: passwordController,
                 decoration: InputDecoration(
-
                   labelText: 'Password',
                   border: OutlineInputBorder(),
                   suffixIcon: Icon(Icons.lock, color: Colors.grey),
                 ),
                 obscureText: true,
-                onChanged: (value) => password = value,
+              //  onChanged: (value) => password = value,
               ),
             ),
             SizedBox(height: 20),
@@ -168,21 +130,41 @@ class Login extends StatelessWidget {
 
               //BUTTTOONNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN!!!!!!!!!!!!!!
 
-              onPressed: () {
-                print(email);
-               fetch_login(context, email, password, laboratistname);
-              // print(email);
-               //print(password);
-            // var auth = authorization(email,password);;
+              onPressed: () async {
 
 
-             // if(auth == true ){
-             //   print('you are good to go');
-             // }
-             // else
-             //   print('fuck u');
-             //
-               },
+
+               // fetch_login(context, email,  password, laboratistname,  gender,
+                  //  shifttiming,  workingdays,  age);
+
+                print(_nameController.text);
+                print(passwordController.text);
+
+
+
+                var auth = await authorization(_nameController.text, passwordController.text);
+          print(auth);
+        if (auth == true) {
+                  print("good");
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Dashboard(
+                            userName: userName,
+                            email: emailaddress,
+                            gender: gender,
+                            age: age,
+                            shifttiming: shifttiming,
+                            workingdays: workingdays)),
+                  );
+
+                  // fetch_login(context, email, password, laboratistname, gender, age, shifttiming, workingdays);
+                } else {
+                  print("nikal");
+                }
+              },
+
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(

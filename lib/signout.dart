@@ -8,7 +8,7 @@ class signout extends StatelessWidget {
   final int age;
   final String gender;
   final String workingdays;
-  final String shifttimmming;
+  final String shifttiming;
 
 
   const signout({Key? key, required this.userName,
@@ -16,7 +16,7 @@ class signout extends StatelessWidget {
     required this.age,
     required this.gender,
     required this.workingdays,
-    required this.shifttimmming,}) : super(key: key);
+    required this.shifttiming,}) : super(key: key);
 
 
   @override
@@ -73,12 +73,12 @@ class signout extends StatelessWidget {
                           children: [
                             Text(
                                 "\n\nGender :\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t $gender",
-                                style: const TextStyle(fontFamily: 'Poppins',fontSize: 20)),
+                                style: const TextStyle(fontFamily: 'Poppins',fontSize: 10)),
                             Text(
                                 "\n\n\n\nAge :\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t $age",
                                 style: const TextStyle(fontFamily: 'Poppins')),
                             Text(
-                                "\n\n\n\n\n\nShift Timmings :\t\t\t $shifttimmming",
+                                "\n\n\n\n\n\nShift Timmings :\t\t\t $shifttiming",
                                 style: const TextStyle(fontFamily: 'Poppins')),
                             Text(
                                 "\n\n\n\n\n\n\n\nWorking Days :\t\t\t\t $workingdays",
@@ -117,7 +117,8 @@ class signout extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigation(userName: userName),
+      bottomNavigationBar: BottomNavigation(userName: userName, email: email, gender: gender,
+          age: age, shifttiming: shifttiming, workingdays: workingdays),
     );
   }
 }

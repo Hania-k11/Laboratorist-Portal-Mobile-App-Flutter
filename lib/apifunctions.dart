@@ -1,11 +1,116 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:laboratorymodule/dashboard.dart';
 
-var ip = "10.133.137.133";
+var ip = "192.168.18.5";
 
+
+
+Future<bool>  authorizationn(String emailaddress, String password) async {
+ print("function hoon");
+  final url = Uri.parse('http://$ip:8000/logininfo/$emailaddress');
+  final Map<String, String> headers = {'Content-Type': 'application/json'};
+  final response = await http.get(url, headers: headers);
+
+  print(response.statusCode);
+  //print(emailaddress);
+  //print(password);
+  if (response.statusCode == 200) {
+    print("im here");
+    Map<String, dynamic> jsonData = json.decode(response.body);
+    if (jsonData.isNotEmpty) {
+      String email = jsonData['email'];
+      String passwords = jsonData['password'];
+      print(passwords);
+      print(email);
+      //String gender = jsonData['gender']; // Assuming gender is a field in your database
+      return
+        email == emailaddress && passwords == password;
+    } else {
+     return false;
+    }
+  } else {
+    // Failed to fetch data from the API
+  return false;
+  }
+}
+
+Future<void> fetch_login(BuildContext context, String email, String password, String laboratistname, String gender,
+    String shifttiming, String workingdays, int age) async {
+  print("fetchlogin function");
+  final url = Uri.parse('http://$ip:8000/getallLaboratoristt/');
+
+  final response = await http.get(url, headers: {'Content-Type': 'application/json'});
+
+
+  print(response.statusCode);
+
+  if (response.statusCode == 200) {
+    List<dynamic> users = json.decode(response.body);
+
+
+
+    // Print the fetched users for debugging
+    print(users);
+    users.forEach((user) {
+      print('Name: ${user['laboratistname']}');
+      print('Email: ${user['email']}');
+      print('Password: ${user['password']}');
+    });
+    print(response.body);
+
+
+
+
+    // Check if any user matches the entered email and password
+    // Find the user's name based on email and password
+    var user = users.firstWhere(
+          (user) => user['email'] == email && user['password'] == password,
+      orElse: () => null,
+    );
+
+    if (user != null) {
+      // If user found, extract the name
+      final String userName = user['laboratistname'];
+      final String email = user['email'];
+      final String gender = user['gender'];
+      final String shifttiming = user['shifttiming'];
+      final String workingdays = user['workingdays'];
+      final int age = user['age'];
+
+      // Navigate to the dashboard screen with the user's name
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Dashboard(userName: userName, gender: gender, shifttiming: shifttiming,
+          workingdays: workingdays, age: age, email: email,),
+        ),
+      );
+    } else {
+      // Display an error message
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Error'),
+          content: Text('Incorrect email or password'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text('OK'),
+            ),
+          ],
+        ),
+      );
+    }
+  } else {
+    // Handle error if unable to fetch data from the server
+    throw Exception('Failed to load data');
+  }
+}
 Future<void> fetch() async {
-  final url = Uri.parse('http://192.168.18.5:8000/getallhospitals/');
+  final url = Uri.parse('http://$ip:8000/getallpatient00/');
   //final visit = Visit(doctorid: doctorid, date: date);
  // print("hania");
   final response = await http.get(url, headers: {'Content-Type': 'application/json'},);
@@ -18,6 +123,51 @@ Future<void> fetch() async {
   }
 }
 
+Future<List< dynamic>> patient11() async {
+  print('patient11');
+  final url = Uri.parse('http://$ip:8000/getallpatient11/');
+  final Map<String, String> headers = {'Content-Type': 'application/json'};
+  final response = await http.get(
+    url,
+    headers: headers,
+  );
+  print(response.statusCode);
+
+  if (response.statusCode == 200) {
+    print('now im here again 234');
+    //  print(response.body);
+    List< dynamic> jsonData = json.decode(response.body);
+    //  print('jsonResponse: $jsonData['Age']');
+    return jsonData;
+  } else {
+    print('in the else cond');
+    throw Exception('Failed to load data');
+  }
+}
+
+
+Future<List< dynamic>> patient00() async {
+print('in the appointment func');
+  final url = Uri.parse('http://$ip:8000/getallpatient00/');
+  final Map<String, String> headers = {'Content-Type': 'application/json'};
+  final response = await http.get(
+    url,
+    headers: headers,
+  );
+ print(response.statusCode);
+  if (response.statusCode == 200) {
+    print('now im here again 234');
+  //  print(response.body);
+   List< dynamic> jsonData = json.decode(response.body);
+  //  print('jsonResponse: $jsonData['Age']');
+    return jsonData;
+  } else {
+    print('in the else cond');
+    throw Exception('Failed to load data');
+  }
+}
+
+
 Future<void> fetchy() async {
   final url = Uri.parse('http://192.168.18.5:8000/getallhospitals/');
   //final visit = Visit(doctorid: doctorid, date: date);
@@ -27,8 +177,11 @@ Future<void> fetchy() async {
   print(response.statusCode);
 
   if (response.statusCode == 200) {
+
     List jsonResponse = json.decode(response.body);
     print(jsonResponse.toString());
+
+
   } else {
     throw Exception('Failed to load data');
   }
@@ -95,7 +248,7 @@ class apifunctions{
 
 }
 
-Future<bool> authorization (String emailaddress, String password) async {
+Future<bool> author (String emailaddress, String password) async {
   print('in authorization 1');
   final url = Uri.parse('http://10.133.137.133:8000/logininfo/$emailaddress');
 

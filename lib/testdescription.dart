@@ -3,17 +3,21 @@ import 'package:laboratorymodule/bottomnavigation.dart';
 
 class testdescription extends StatelessWidget {
   final String userName;
-  final int age;
+  final String email;
   final String gender;
-  final String dateofTest;
-  final List<String> test;
+  final int age;
+  final String shifttiming;
+  final String workingdays;
+
 
   const testdescription(
       {required this.userName,
         required this.age,
+        required this.email,
         required this.gender,
-        required this.dateofTest,
-        required this.test,
+        required this.shifttiming,
+        required this.workingdays,
+
         super.key});
 
 //haseeb
@@ -152,7 +156,7 @@ class testdescription extends StatelessWidget {
                                               style: const TextStyle(
                                                   fontFamily: 'Poppins')),
                                           Text(
-                                              "\n\n\n\n\n\nDate Of Test :\t\t\t ${dateofTest}",
+                                              "\n\n\n\n\n\nDate Of Test :\t\t\t date",
                                               style: const TextStyle(
                                                   fontFamily: 'Poppins')),
                                         ],
@@ -205,11 +209,11 @@ class testdescription extends StatelessWidget {
                                       ),
                                       child: ListView.builder(
                                           padding: const EdgeInsets.all(8),
-                                          itemCount: test.length,
+                                        //  itemCount: test.length,
                                           itemBuilder:
                                               (BuildContext context, int index) {
                                             return Text(
-                                              "${test[index]}\n",
+                                              "${email[index]}\n",
                                               style: const TextStyle(
                                                   fontSize: 12,
                                                   fontFamily: 'Poppins'),
@@ -229,7 +233,8 @@ class testdescription extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigation(userName: userName),
+      bottomNavigationBar: BottomNavigation(userName: userName, email: email, gender: gender,
+          age: age, shifttiming: shifttiming, workingdays: workingdays),
     );
   }
 }

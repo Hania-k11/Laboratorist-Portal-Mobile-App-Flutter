@@ -4,8 +4,19 @@ import 'package:laboratorymodule/report.dart';
 
 class viewreport extends StatelessWidget {
   final String userName;
+  final String email;
+  final String gender;
+  final int age;
+  final String shifttiming;
+  final String workingdays;
 
-  const viewreport({Key? key, required this.userName}) : super(key: key);
+  const viewreport({Key? key, required this.userName,
+    required this.age,
+    required this.email,
+    required this.gender,
+    required this.shifttiming,
+    required this.workingdays,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -177,7 +188,8 @@ class viewreport extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigation(userName: userName),
-    );
+      bottomNavigationBar: BottomNavigation(userName: userName, email: email, gender: gender,
+          age: age, shifttiming: shifttiming, workingdays: workingdays),);
+
   }
 }

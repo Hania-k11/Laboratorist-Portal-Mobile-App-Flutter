@@ -6,8 +6,21 @@ import 'package:laboratorymodule/viewreport.dart';
 
 class Dashboard extends StatelessWidget {
   final String userName;
+  final String email;
+  final String gender;
+  final int age;
+  final String shifttiming;
+  final String workingdays;
 
-  const Dashboard({Key? key, required this.userName}) : super(key: key);
+  const Dashboard({
+    Key? key,
+    required this.userName,
+    required this.age,
+    required this.email,
+    required this.gender,
+    required this.shifttiming,
+    required this.workingdays,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +36,9 @@ class Dashboard extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              patient00();
+            },
             icon: Image.asset(
               'assets/images/heart.png',
               width: 40,
@@ -78,7 +93,6 @@ class Dashboard extends StatelessWidget {
                   height: 600,
                   fit: BoxFit.cover,
                 ),
-
                 Positioned(
                   top: 215,
                   left: 50,
@@ -88,9 +102,16 @@ class Dashboard extends StatelessWidget {
                         onPressed: () {
                           // Add your onPressed logic here
                           Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => tests(userName: userName,)),
-                          );
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => tests(
+                                    userName: userName,
+                                    email: email,
+                                    gender: gender,
+                                    age: age,
+                                    shifttiming: shifttiming,
+                                    workingdays: workingdays),
+                              ));
                         },
                         style: ButtonStyle(
                           backgroundColor:
@@ -113,12 +134,18 @@ class Dashboard extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => viewreport(userName: userName,)),
+                            MaterialPageRoute(
+                                builder: (context) => viewreport(
+                                    userName: userName,
+                                    email: email,
+                                    gender: gender,
+                                    age: age,
+                                    shifttiming: shifttiming,
+                                    workingdays: workingdays)),
                           );
 
-                         // fetch();
-                         // fetch_login();
-
+                          // fetch();
+                          // fetch_login();
 
                           // Add your onPressed logic here
                           // Navigator.push(
@@ -151,7 +178,13 @@ class Dashboard extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigation(userName: userName),
+      bottomNavigationBar: BottomNavigation(
+          userName: userName,
+          email: email,
+          gender: gender,
+          age: age,
+          shifttiming: shifttiming,
+          workingdays: workingdays),
     );
   }
 }

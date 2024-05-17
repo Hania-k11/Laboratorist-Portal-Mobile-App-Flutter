@@ -6,9 +6,18 @@ import 'package:laboratorymodule/viewreport.dart';
 
 class BottomNavigation extends StatelessWidget {
   final String userName;
+  final String email;
+  final String gender;
+  final int age;
+  final String shifttiming;
+  final String workingdays;
 
-
-  const BottomNavigation({Key? key, required this.userName}) : super(key: key);
+  const BottomNavigation({Key? key, required this.userName,
+  required this.age,
+    required this.email,
+    required this.gender,
+    required this.shifttiming,
+    required this.workingdays,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,33 +44,33 @@ class BottomNavigation extends StatelessWidget {
               Navigator.push(
                 context,
                   MaterialPageRoute(
-                  builder: (context) => Dashboard(userName: userName),
-                  ),
+                  builder: (context) => Dashboard(userName: userName, email: email, gender: gender,
+                      age: age, shifttiming: shifttiming, workingdays: workingdays)),
+
               );
             }, 'assets/images/homeicon.png'),
             _buildIconButton(() {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => tests(userName: userName,)),
+                MaterialPageRoute(builder: (context) => tests(userName: userName, email: email, gender: gender,
+                    age: age, shifttiming: shifttiming, workingdays: workingdays),)
+
               );
             }, 'assets/images/testicon.png'),
             _buildIconButton(() {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => viewreport(userName: userName,)),
+                MaterialPageRoute(builder: (context) => viewreport(userName: userName, email: email, gender: gender,
+                    age: age, shifttiming: shifttiming, workingdays: workingdays)),
               );
             }, 'assets/images/reporticon.png'),
             _buildIconButton(() {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => signout(
-                        userName: '$userName',
-                        email: 'haniakhan@gmail.com',
-                        age: 19,
-                        gender: 'Female',
-                        workingdays: '9am - 5pm',
-                        shifttimmming: "Monday - Thursday")),
+                    builder: (context) => signout
+                        (userName: userName, email: email, gender: gender,
+                        age: age, shifttiming: shifttiming, workingdays: workingdays)),
               );
             }, 'assets/images/profileicon.png'),
           ],
