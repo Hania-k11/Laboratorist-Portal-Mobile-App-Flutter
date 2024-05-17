@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:laboratorymodule/apifunctions.dart';
 import 'package:laboratorymodule/bottomnavigation.dart';
 import 'package:laboratorymodule/testdescription.dart';
+import 'package:laboratorymodule/CompleteScreen.dart';
 import 'package:laboratorymodule/tests.dart';
 
-import 'Remaining.dart';
 import 'WhiteBoxIndicator.dart';
 
 //List<String> test = [
@@ -19,7 +19,7 @@ import 'WhiteBoxIndicator.dart';
 var component1;
 var component2;
 var patientname;
-class CompletedScreen extends StatelessWidget {
+class Remaining extends StatelessWidget {
   final String userName;
   final String email;
   final String gender;
@@ -27,7 +27,7 @@ class CompletedScreen extends StatelessWidget {
   final String shifttiming;
   final String workingdays;
 
-  const CompletedScreen({
+  const Remaining({
     Key? key,
     required this.userName,
     required this.age,
@@ -97,6 +97,27 @@ class CompletedScreen extends StatelessWidget {
               ),
               SizedBox(width: 10),
 
+
+              ElevatedButton(
+                onPressed: () {
+                  // Add onPressed functionality here
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>
+                        CompletedScreen(userName: userName,
+                          email: email,
+                          gender: gender,
+                          age: age,
+                          shifttiming: shifttiming,
+                          workingdays: workingdays,)), // Navigate to Login screen
+                  );
+                },
+                child: Text('Completed'),
+              ),
+
+              SizedBox(width: 10),
+
+
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blueGrey, // Set background color to gray
@@ -106,27 +127,7 @@ class CompletedScreen extends StatelessWidget {
                 onPressed: () {
                   // Add onPressed functionality here
                 },
-                child: Text('Completed', style: TextStyle(color: Colors.white)), // Set text color to white
-              ),
-
-
-              SizedBox(width: 10),
-
-
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) =>  Remaining(userName: userName,
-                      email: email,
-                      gender: gender,
-                      age: age,
-                      shifttiming: shifttiming,
-                      workingdays: workingdays,)), // Navigate to Login screen
-                  );
-                  // Add onPressed functionality here
-                },
-                child: Text('Remaining'),
+                child: Text('Remaining',style: TextStyle(color: Colors.white),),
               ),
               SizedBox(width: 2),
             ],
@@ -139,7 +140,7 @@ class CompletedScreen extends StatelessWidget {
                 // Adjust horizontal padding as needed
 
                 child: FutureBuilder<List<dynamic>>(
-                    future: completedTest(),
+                    future: remainingTest(),
                     builder: (context, snapshot) {
                       if (snapshot.hasError) {
                         // Display an error message if fetching data failed
@@ -323,10 +324,7 @@ class CompletedScreen extends StatelessWidget {
                           height: 80.0,
 
                         );
-
-
-
-                    }
+                      }
                     })),
           )
         ],

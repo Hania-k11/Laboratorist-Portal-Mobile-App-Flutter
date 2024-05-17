@@ -1,9 +1,13 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:laboratorymodule/Remaining.dart';
 import 'package:laboratorymodule/apifunctions.dart';
 import 'package:laboratorymodule/bottomnavigation.dart';
 import 'package:laboratorymodule/testdescription.dart';
+import 'package:laboratorymodule/CompleteScreen.dart';
+
+import 'WhiteBoxIndicator.dart';
 
 //List<String> test = [
 // "Thyroid-Stimulating Hormone (TSH)",
@@ -71,18 +75,63 @@ class tests extends StatelessWidget {
             ),
           ),
            SizedBox(height: 25),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-               SizedBox(width: 2),
-              _buildRoundButton1('All Tests'),
-               SizedBox(width: 10),
-              _buildRoundButton2('Completed'),
-               SizedBox(width: 10),
-              _buildRoundButton3('Remaining'),
-               SizedBox(width: 2),
-            ],
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            SizedBox(width: 2),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blueGrey, // Set background color to gray
+                shadowColor: Colors.white, // Set shadow color to white
+                elevation: 7, // Set elevation to 7
+              ),
+              onPressed: () {
+                // Add onPressed functionality here
+              },
+              child: Text('All Tests',style: TextStyle(color: Colors.white),),
+            ),
+            SizedBox(width: 10),
+
+
+            ElevatedButton(
+              onPressed: () {
+                // Add onPressed functionality here
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  CompletedScreen(userName: userName,
+                    email: email,
+                    gender: gender,
+                    age: age,
+                    shifttiming: shifttiming,
+                    workingdays: workingdays,)), // Navigate to Login screen
+                );
+              },
+              child: Text('Completed'),
+            ),
+
+            SizedBox(width: 10),
+
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  Remaining(userName: userName,
+                    email: email,
+                    gender: gender,
+                    age: age,
+                    shifttiming: shifttiming,
+                    workingdays: workingdays,)), // Navigate to Login screen
+                );
+
+                // Add onPressed functionality here
+              },
+              child: Text('Remaining'),
+            ),
+            SizedBox(width: 2),
+          ],
+        ),
+
             SizedBox(height: 20),
           Expanded(
             child: Padding(
@@ -271,7 +320,11 @@ class tests extends StatelessWidget {
 
                       } else {
                         // Display a loading indicator while fetching data
-                        return CircularProgressIndicator();
+                        return WhiteBoxIndicator(
+                          width: 80.0, // Adjust width and height as needed
+                          height: 80.0,
+
+                        );
                       }
                     })),
           )
