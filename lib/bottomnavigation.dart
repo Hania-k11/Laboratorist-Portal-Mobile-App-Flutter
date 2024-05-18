@@ -11,13 +11,16 @@ class BottomNavigation extends StatelessWidget {
   final int age;
   final String shifttiming;
   final String workingdays;
+  final int laboratorist_ID;
 
   const BottomNavigation({Key? key, required this.userName,
   required this.age,
     required this.email,
     required this.gender,
     required this.shifttiming,
-    required this.workingdays,}) : super(key: key);
+    required this.workingdays,
+    required this.laboratorist_ID,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +48,7 @@ class BottomNavigation extends StatelessWidget {
                 context,
                   MaterialPageRoute(
                   builder: (context) => Dashboard(userName: userName, email: email, gender: gender,
-                      age: age, shifttiming: shifttiming, workingdays: workingdays)),
+                      age: age, shifttiming: shifttiming, workingdays: workingdays, laboratorist_ID: laboratorist_ID)),
 
               );
             }, 'assets/images/homeicon.png'),
@@ -53,7 +56,7 @@ class BottomNavigation extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => tests(userName: userName, email: email, gender: gender,
-                    age: age, shifttiming: shifttiming, workingdays: workingdays),)
+                    age: age, shifttiming: shifttiming, workingdays: workingdays, laboratorist_ID: laboratorist_ID),)
 
               );
             }, 'assets/images/testicon.png'),
@@ -61,7 +64,7 @@ class BottomNavigation extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => viewreport(userName: userName, email: email, gender: gender,
-                    age: age, shifttiming: shifttiming, workingdays: workingdays)),
+                    age: age, shifttiming: shifttiming, workingdays: workingdays, laboratorist_ID:laboratorist_ID)),
               );
             }, 'assets/images/reporticon.png'),
             _buildIconButton(() {
@@ -70,7 +73,7 @@ class BottomNavigation extends StatelessWidget {
                 MaterialPageRoute(
                     builder: (context) => signout
                         (userName: userName, email: email, gender: gender,
-                        age: age, shifttiming: shifttiming, workingdays: workingdays)),
+                        age: age, shifttiming: shifttiming, workingdays: workingdays,laboratorist_ID: laboratorist_ID )),
               );
             }, 'assets/images/profileicon.png'),
           ],

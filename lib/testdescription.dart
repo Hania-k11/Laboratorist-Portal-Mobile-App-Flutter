@@ -17,6 +17,7 @@ class testdescription extends StatelessWidget {
   final String Component1;
   final String Component2;
   final String Component3;
+  final int laboratorist_ID;
 
 
   const testdescription(
@@ -34,6 +35,7 @@ class testdescription extends StatelessWidget {
         required this.Component1,
         required this.Component2,
         required this.Component3,
+        required this.laboratorist_ID,
 
         super.key,   });
 
@@ -278,7 +280,7 @@ class testdescription extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigation(userName: userName, email: email, gender: gender,
-          age: age, shifttiming: shifttiming, workingdays: workingdays),
+          age: age, shifttiming: shifttiming, workingdays: workingdays, laboratorist_ID: laboratorist_ID),
     );
   }
 }

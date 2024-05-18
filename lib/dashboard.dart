@@ -11,6 +11,7 @@ class Dashboard extends StatelessWidget {
   final int age;
   final String shifttiming;
   final String workingdays;
+  final int laboratorist_ID;
 
   const Dashboard({
     Key? key,
@@ -20,6 +21,7 @@ class Dashboard extends StatelessWidget {
     required this.gender,
     required this.shifttiming,
     required this.workingdays,
+    required this.laboratorist_ID,
   }) : super(key: key);
 
   @override
@@ -110,7 +112,8 @@ class Dashboard extends StatelessWidget {
                                     gender: gender,
                                     age: age,
                                     shifttiming: shifttiming,
-                                    workingdays: workingdays),
+                                    workingdays: workingdays,
+                                    laboratorist_ID: laboratorist_ID),
                               ));
                         },
                         style: ButtonStyle(
@@ -141,7 +144,8 @@ class Dashboard extends StatelessWidget {
                                     gender: gender,
                                     age: age,
                                     shifttiming: shifttiming,
-                                    workingdays: workingdays)),
+                                    workingdays: workingdays,
+                                    laboratorist_ID:laboratorist_ID)),
                           );
 
                           // fetch();
@@ -184,7 +188,9 @@ class Dashboard extends StatelessWidget {
           gender: gender,
           age: age,
           shifttiming: shifttiming,
-          workingdays: workingdays),
+          workingdays: workingdays,
+          laboratorist_ID:laboratorist_ID,
+      ),
     );
   }
 }

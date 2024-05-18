@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:laboratorymodule/ProjectScreen.dart';
 import 'package:laboratorymodule/bottomnavigation.dart';
-
+import 'package:laboratorymodule/ProjectScreen.dart';
+// import your ProjectScreen here
 
 class signout extends StatelessWidget {
   final String userName;
@@ -9,15 +11,18 @@ class signout extends StatelessWidget {
   final String gender;
   final String workingdays;
   final String shifttiming;
+  final int laboratorist_ID;
 
-
-  const signout({Key? key, required this.userName,
+  const signout({
+    Key? key,
+    required this.userName,
     required this.email,
     required this.age,
     required this.gender,
     required this.workingdays,
-    required this.shifttiming,}) : super(key: key);
-
+    required this.shifttiming,
+    required this.laboratorist_ID,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +43,9 @@ class signout extends StatelessWidget {
                         child: Stack(
                           children: [
                             Image.asset(
+                              'assets/images/Group 85.png', // Corrected asset path
                               height: 200,
                               width: 200,
-                              'assets/images/Group 85.png',
                               fit: BoxFit.cover,
                             ),
                           ],
@@ -55,60 +60,58 @@ class signout extends StatelessWidget {
                         child: Text(
                           "$userName",
                           style: const TextStyle(
-                              fontSize: 20,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.bold),
+                            fontSize: 20,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                       Container(
-                          alignment: Alignment.center,
-                          padding: EdgeInsets.fromLTRB(40, 0, 0, 215),
-                          child: Text(
-                            "\n$email",
-                            style: TextStyle(fontFamily: 'Poppins'),
-                          )),
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.fromLTRB(40, 0, 0, 215),
+                        child: Text(
+                          "\n\n\t\t\t\t$email",
+                          style: TextStyle(fontFamily: 'Poppins'),
+                        ),
+                      ),
                       Container(
                         alignment: Alignment.center,
                         child: Stack(
                           children: [
                             Text(
-                                "\n\nGender :\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t $gender",
-                                style: const TextStyle(fontFamily: 'Poppins',fontSize: 10)),
+                              "\n\nGender :\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t $gender",
+                              style: const TextStyle(fontFamily: 'Poppins'),
+                            ),
                             Text(
-                                "\n\n\n\nAge :\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t $age",
-                                style: const TextStyle(fontFamily: 'Poppins')),
+                              "\n\n\n\nAge :\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t $age",
+                              style: const TextStyle(fontFamily: 'Poppins'),
+                            ),
                             Text(
-                                "\n\n\n\n\n\nShift Timmings :\t\t\t $shifttiming",
-                                style: const TextStyle(fontFamily: 'Poppins')),
+                              "\n\n\n\n\n\nShift Timings :\t\t\t $shifttiming",
+                              style: const TextStyle(fontFamily: 'Poppins'),
+                            ),
                             Text(
-                                "\n\n\n\n\n\n\n\nWorking Days :\t\t\t\t $workingdays",
-                                style: const TextStyle(fontFamily: 'Poppins')),
+                              "\n\n\n\n\n\n\n\nWorking Days :\t\t\t\t $workingdays",
+                              style: const TextStyle(fontFamily: 'Poppins'),
+                            ),
                           ],
                         ),
                       ),
                       Container(
-                          alignment: Alignment.bottomCenter,
-                          padding: const EdgeInsets.fromLTRB(60, 0, 0, 150),
-                          child: Stack(
-                            children: [
-                              Image.asset(
-                                height: 30,
-                                width: 30,
-                                'assets/images/logout.png',
-                                fit: BoxFit.cover,
-                              ),
-                              Container(
-                                  padding: EdgeInsets.only(left: 35),
-                                  child: const Text(
-                                    "SignOut",
-                                    style: TextStyle(
-                                        color: Color.fromRGBO(0, 127, 255, 1),
-                                        fontFamily: 'Rubik',
-                                        fontSize: 23,
-                                        fontWeight: FontWeight.bold),
-                                  ))
-                            ],
-                          ))
+                        alignment: Alignment.bottomCenter,
+                        padding: const EdgeInsets.fromLTRB(60, 0, 0, 150),
+                        child:  ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue, // Set background color to gray
+                            shadowColor: Colors.white, // Set shadow color to white
+                            elevation: 7, // Set elevation to 7
+                          ),
+                          onPressed: () {
+                            // Add onPressed functionality here
+                          },
+                          child: Text('Logout', style: TextStyle(color: Colors.white)), // Set text color to white
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -117,8 +120,15 @@ class signout extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigation(userName: userName, email: email, gender: gender,
-          age: age, shifttiming: shifttiming, workingdays: workingdays),
+      bottomNavigationBar: BottomNavigation(
+        userName: userName,
+        email: email,
+        gender: gender,
+        age: age,
+        shifttiming: shifttiming,
+        workingdays: workingdays,
+          laboratorist_ID: laboratorist_ID
+      ),
     );
   }
 }

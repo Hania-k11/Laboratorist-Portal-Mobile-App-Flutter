@@ -5,7 +5,6 @@ import 'package:laboratorymodule/apifunctions.dart';
 import 'package:laboratorymodule/bottomnavigation.dart';
 import 'package:laboratorymodule/testdescription.dart';
 import 'package:laboratorymodule/tests.dart';
-
 import 'Remaining.dart';
 import 'WhiteBoxIndicator.dart';
 
@@ -26,6 +25,7 @@ class CompletedScreen extends StatelessWidget {
   final int age;
   final String shifttiming;
   final String workingdays;
+  final int laboratorist_ID;
 
   const CompletedScreen({
     Key? key,
@@ -35,6 +35,7 @@ class CompletedScreen extends StatelessWidget {
     required this.gender,
     required this.shifttiming,
     required this.workingdays,
+    required this.laboratorist_ID,
   }) : super(key: key);
 
 //1
@@ -89,7 +90,8 @@ class CompletedScreen extends StatelessWidget {
                           gender: gender,
                           age: age,
                           shifttiming: shifttiming,
-                          workingdays: workingdays,)), // Navigate to Login screen
+                          workingdays: workingdays,
+                            laboratorist_ID: laboratorist_ID)), // Navigate to Login screen
                   );
                   // Add onPressed functionality here
                 },
@@ -122,7 +124,8 @@ class CompletedScreen extends StatelessWidget {
                       gender: gender,
                       age: age,
                       shifttiming: shifttiming,
-                      workingdays: workingdays,)), // Navigate to Login screen
+                      workingdays: workingdays,
+                        laboratorist_ID: laboratorist_ID)), // Navigate to Login screen
                   );
                   // Add onPressed functionality here
                 },
@@ -139,7 +142,7 @@ class CompletedScreen extends StatelessWidget {
                 // Adjust horizontal padding as needed
 
                 child: FutureBuilder<List<dynamic>>(
-                    future: completedTest(),
+                    future: completedTest(laboratorist_ID),
                     builder: (context, snapshot) {
                       if (snapshot.hasError) {
                         // Display an error message if fetching data failed
@@ -291,7 +294,8 @@ class CompletedScreen extends StatelessWidget {
                                                             testDate: testDate,
                                                             Component1: Component1,
                                                             Component2: Component2,
-                                                            Component3: Component3
+                                                            Component3: Component3,
+                                                            laboratorist_ID: laboratorist_ID
 
                                                         ),
                                                   ));
@@ -337,7 +341,8 @@ class CompletedScreen extends StatelessWidget {
           gender: gender,
           age: age,
           shifttiming: shifttiming,
-          workingdays: workingdays),
+          workingdays: workingdays,
+          laboratorist_ID: laboratorist_ID),
     );
   }
 }

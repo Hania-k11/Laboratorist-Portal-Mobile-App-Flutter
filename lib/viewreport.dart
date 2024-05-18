@@ -9,6 +9,7 @@ class viewreport extends StatelessWidget {
   final int age;
   final String shifttiming;
   final String workingdays;
+  final int laboratorist_ID;
 
   const viewreport({Key? key, required this.userName,
     required this.age,
@@ -16,6 +17,7 @@ class viewreport extends StatelessWidget {
     required this.gender,
     required this.shifttiming,
     required this.workingdays,
+    required this.laboratorist_ID
   }) : super(key: key);
 
   @override
@@ -58,7 +60,7 @@ class viewreport extends StatelessWidget {
             left: 0,
             top: 26,
             child: Container(
-              width: 412,
+              width: 415,
               height: 35,
               decoration: BoxDecoration(
                 color: const Color(0xFF007FFF),
@@ -66,7 +68,7 @@ class viewreport extends StatelessWidget {
                   BoxShadow(
                     color: Colors.black12,
                     offset: Offset(0, 4),
-                    blurRadius: 4,
+                    blurRadius: 15,
                   ),
                 ],
                 borderRadius: BorderRadius.circular(17.5),
@@ -84,7 +86,7 @@ class viewreport extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: 28,
+            left: 30,
             top: 123,
             child: Image.asset(
               'assets/images/obj.png.png',
@@ -93,7 +95,7 @@ class viewreport extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: 31,
+            left: 50,
             top: 270,
             child: Container(
               width: 320,
@@ -149,7 +151,7 @@ class viewreport extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: 110,
+            left: 115,
             top: 375,
             child: Container(
               width: 172,
@@ -189,7 +191,8 @@ class viewreport extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomNavigation(userName: userName, email: email, gender: gender,
-          age: age, shifttiming: shifttiming, workingdays: workingdays),);
+          age: age, shifttiming: shifttiming, workingdays: workingdays,
+          laboratorist_ID:laboratorist_ID),);
 
   }
 }

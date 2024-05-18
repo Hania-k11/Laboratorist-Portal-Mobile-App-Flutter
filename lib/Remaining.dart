@@ -26,6 +26,7 @@ class Remaining extends StatelessWidget {
   final int age;
   final String shifttiming;
   final String workingdays;
+  final int laboratorist_ID;
 
   const Remaining({
     Key? key,
@@ -35,6 +36,7 @@ class Remaining extends StatelessWidget {
     required this.gender,
     required this.shifttiming,
     required this.workingdays,
+    required this.laboratorist_ID,
   }) : super(key: key);
 
 //1
@@ -89,7 +91,8 @@ class Remaining extends StatelessWidget {
                           gender: gender,
                           age: age,
                           shifttiming: shifttiming,
-                          workingdays: workingdays,)), // Navigate to Login screen
+                          workingdays: workingdays,
+                            laboratorist_ID: laboratorist_ID)), // Navigate to Login screen
                   );
                   // Add onPressed functionality here
                 },
@@ -109,7 +112,8 @@ class Remaining extends StatelessWidget {
                           gender: gender,
                           age: age,
                           shifttiming: shifttiming,
-                          workingdays: workingdays,)), // Navigate to Login screen
+                          workingdays: workingdays,
+                            laboratorist_ID: laboratorist_ID)), // Navigate to Login screen
                   );
                 },
                 child: Text('Completed'),
@@ -140,7 +144,7 @@ class Remaining extends StatelessWidget {
                 // Adjust horizontal padding as needed
 
                 child: FutureBuilder<List<dynamic>>(
-                    future: remainingTest(),
+                    future: remainingTest(laboratorist_ID),
                     builder: (context, snapshot) {
                       if (snapshot.hasError) {
                         // Display an error message if fetching data failed
@@ -184,33 +188,18 @@ class Remaining extends StatelessWidget {
                                               'assets/images/avatarfemale.png'),
                                         ),
                                         SizedBox(width: 20.0),
-                                        Text(patientname),
-                                        // Text(
-                                        //   name,
-                                        //   style: TextStyle(
-                                        //     fontWeight: FontWeight.bold,
-                                        //     fontFamily: 'Epilogue',
-                                        //     color: Color(0xff573926),
-                                        //     fontSize:
-                                        //         20.0, // Choose your desired size. This sets the font size to 24.0
-                                        //   ),
-                                        // )
+                                        Text(patientName),
                                       ],
                                     ),
                                     Padding(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 59.0),
-                                      // Adjust vertical padding as needed
                                       child: Text(
-                                        item['testname'],
-                                        //item['testname'],
+                                        testName,
                                         style: TextStyle(
                                           fontFamily: 'Poppins',
-                                          // Your specified font family
                                           color: Color(0xff573926),
-                                          // Your specified color
-                                          fontSize:
-                                          15.0, // Your specified font size
+                                          fontSize: 15.0, // Your specified font size
                                         ),
                                       ),
                                     ),
@@ -221,14 +210,14 @@ class Remaining extends StatelessWidget {
                                     ),
                                     const SizedBox(height: 8.0),
                                     Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment: MainAxisAlignment
+                                          .spaceBetween,
                                       children: [
                                         Row(
                                           children: [
                                             Icon(Icons.date_range),
                                             SizedBox(width: 4.0),
-                                            Text(item['testdate']),
+                                            Text(testDate),
                                           ],
                                         ),
                                         SizedBox(width: 16.0),
@@ -243,32 +232,30 @@ class Remaining extends StatelessWidget {
                                     ),
                                     const SizedBox(height: 8.0),
                                     Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment: MainAxisAlignment
+                                          .spaceBetween,
                                       children: [
-                                        TextButton(
-                                          onPressed: () {
-                                            // Add onPressed functionality here
+                                        ElevatedButton(
+                                          onPressed: item['teststatus'] == 'Completed'
+                                              ? null
+                                              : () async {
+                                            await updateTestStatus(item['patientid'], 'Completed');
+                                            // Rebuild the widget to reflect the updated status
+                                            (context as Element).reassemble();
                                           },
-                                          style: TextButton.styleFrom(
-                                            backgroundColor: Colors.grey,
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: item['teststatus'] == 'Completed'
+                                                ? Colors.grey
+                                                : Colors.pink,
                                             shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                              BorderRadius.circular(20),
+                                              borderRadius: BorderRadius.circular(20.0),
                                             ),
                                           ),
-                                          child: const Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                vertical: 1.0,
-                                                horizontal: 16.0),
-                                            child: Text(
-                                              'Completed',
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            ),
+                                          child: Text(
+                                            item['teststatus'],
+                                            style: TextStyle(color: Colors.white),
                                           ),
                                         ),
-
                                         //VIEW DETAIL BUTTON!!!!!!!
                                         TextButton(
                                             onPressed: () {
@@ -292,7 +279,8 @@ class Remaining extends StatelessWidget {
                                                             testDate: testDate,
                                                             Component1: Component1,
                                                             Component2: Component2,
-                                                            Component3: Component3
+                                                            Component3: Component3,
+                                                            laboratorist_ID:laboratorist_ID
 
                                                         ),
                                                   ));
@@ -335,7 +323,8 @@ class Remaining extends StatelessWidget {
           gender: gender,
           age: age,
           shifttiming: shifttiming,
-          workingdays: workingdays),
+          workingdays: workingdays,
+          laboratorist_ID: laboratorist_ID),
     );
   }
 }
