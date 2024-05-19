@@ -37,48 +37,312 @@ class report extends StatelessWidget {
       body: Stack(
         children: [
           Center(
-            child: Image.asset(
-              'assets/images/report1.png ',
-              fit: BoxFit.contain,
-              height: MediaQuery.of(context).size.height * 0.8, // Adjust the size of the image
+            child: Container(
+              alignment: Alignment.center,
+              height: 580, // Adjusted height for Pixel 7 screen
+              width: 590,  // Adju/ Adjusts the width to 80% of the screen width
+              child: Image.asset(
+                'assets/images/report1.png',
+                fit: BoxFit.contain,  // Ensures the image is contained within the given dimensions
+              ),
             ),
           ),
+
+          SizedBox(height: 10),
           Positioned(
-            left: 100,
-            top: 250,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            left: 79,
+            top: 248,
+            child: Row(
               children: [
-                Row(
-                  children: [
-                    Text('Zainab Rauf'),
-                    SizedBox(width: 10),
-                    Text('729200'),
-                  ],
+                Text(
+                  'Female',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 9,
+                  ),
                 ),
-                SizedBox(height: 10),
-                Row(
-                  children: [
-                    Text('Female'),
-                    SizedBox(width: 10),
-                    Text('07/07/2024'),
-                  ],
+                SizedBox(width: 115),
+                Text(
+                  '2023-06-16',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 9,
+                  ),
                 ),
-                SizedBox(height: 10),
-                Row(
-                  children: [
-                    Text('20'),
-                    SizedBox(width: 10),
-                    Text('686868'),
-                  ],
-                ),
-                SizedBox(height: 10),
-                Text('Dr. Farheen'),
               ],
             ),
           ),
+          SizedBox(height: 10),
+
+          SizedBox(height: 10),
+          Positioned(
+            left: 67,
+            top: 262,
+            child: Row(
+              children: [
+                Text(
+                  '20',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 9,
+                  ),
+                ),
+                SizedBox(width: 163),
+                Text(
+                  '0309289302',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 9,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 10),
+          Positioned(
+            left: 75,
+            top: 275,
+            child:Text(
+              'Dr. Adams',
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                fontSize: 9,
+              ),
+            ),
+          ),
+          SizedBox(height: 10),
+          Positioned(
+            left: 302,
+            top: 372,
+            child:Text(
+              '11.0-11.0',
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                fontSize: 7,
+              ),
+            ),
+          ),
+          SizedBox(height: 20),
+          Positioned(
+            left: 302,
+            top: 410,
+            child:Text(
+              '12.0-13.0',
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                fontSize: 7,
+              ),
+            ),
+          ),
+          SizedBox(height: 20),
+          Positioned(
+            left: 302,
+            top: 444,
+            child:Text(
+              '13.0-13.0',
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                fontSize: 7,
+              ),
+            ),
+          ),
+          SizedBox(height: 100),
+          Positioned(
+            left: 48,
+            top: 315,
+            child:Text(
+              'Thyroid Test',
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                fontSize: 11,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Positioned(
+            left: 105,
+            top: 235,
+            child: Row(
+              children: [
+                Text(
+                  'Zainab Rauf',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 9,
+                  ),
+                ),
+                SizedBox(width: 82),
+                Text(
+                  '201',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 9,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 10),
+          Positioned(
+            left: 79,
+            top: 248,
+            child: Row(
+              children: [
+                Text(
+                  'Female',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 9,
+                  ),
+                ),
+                SizedBox(width: 115),
+                Text(
+                  '2023-06-16',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 9,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 10),
+          Positioned(
+            left: 67,
+            top: 262,
+            child: Row(
+              children: [
+                Text(
+                  '20',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 9,
+                  ),
+                ),
+                SizedBox(width: 163),
+                Text(
+                  '0309289302',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 9,
+                  ),
+                ),
+              ],
+            ),
+          ),
+    Padding(
+    padding: const EdgeInsets.all(45.0),
+    child: Row(
+    mainAxisAlignment: MainAxisAlignment.start,
+    children: <Widget>[
+    Container(
+    width: 65,
+    margin: EdgeInsets.only(right: 5),
+    child: Column(
+      children: <Widget>[
+        SizedBox(height: 325),
+        Text(
+          'BUN',
+          style: TextStyle(fontSize: 9.0), // Adjust font size for row 1
+        ),
+        SizedBox(height: 30),
+        Text(
+          'Creatinine',
+          style: TextStyle(fontSize: 9.0), // Adjust font size for row 2
+        ),
+        SizedBox(height: 30),
+        Text(
+          'GFR',
+          style: TextStyle(fontSize: 9.0), // Adjust font size for row 3
+        ),
+      ],
+    ),
+    ),
+      SizedBox(width: 30),
+    Container(
+    width: 40,
+    margin: EdgeInsets.only(right: 10),
+    child: Column(
+      children: <Widget>[
+        SizedBox(height: 325),
+        Text(
+          '1.5',
+          style: TextStyle(fontSize: 9.0), // Adjust font size for row 1
+        ),
+        SizedBox(height: 30),
+        Text(
+          '0.6',
+          style: TextStyle(fontSize: 9.0), // Adjust font size for row 2
+        ),
+        SizedBox(height: 30),
+        Text(
+          '10.1',
+          style: TextStyle(fontSize: 9.0), // Adjust font size for row 3
+        ),
+      ],
+    ),
+    ),
+      SizedBox(width:10 ),
+
+      Container(
+        width: 40,
+        margin: EdgeInsets.only(right: 10),
+        child: Column(
+          children: <Widget>[
+            SizedBox(height: 325),
+            Text(
+              'ug/ml',
+              style: TextStyle(fontSize: 9.0), // Adjust font size for row 1
+            ),
+            SizedBox(height: 30),
+            Text(
+              'mm/bn',
+              style: TextStyle(fontSize: 9.0), // Adjust font size for row 2
+            ),
+            SizedBox(height: 30),
+            Text(
+              'mm/cl',
+              style: TextStyle(fontSize: 9.0), // Adjust font size for row 3
+            ),
+          ],
+        ),
+      ),
+      SizedBox(width:24),
+
+      Container(
+        width: 29,
+        margin: EdgeInsets.only(right: 10),
+        child: Column(
+          children: <Widget>[
+            SizedBox(height: 347),
+            Text(
+              '0.3-9.0',
+              style: TextStyle(fontSize: 7.0), // Adjust font size for row 1
+            ),
+            SizedBox(height: 25),
+            Text(
+              '10.0-8.9',
+              style: TextStyle(fontSize: 7.0), // Adjust font size for row 2
+            ),
+            SizedBox(height: 27),
+            Text(
+              '2.0-9.0',
+              style: TextStyle(fontSize: 7.0), // Adjust font size for row 3
+            ),
+          ],
+        ),
+      ),
+      SizedBox(width:10 ),
+
+
+  ]
+
+    ),
+    ),
+
         ],
       ),
+
       bottomNavigationBar: BottomNavigation(
         userName: userName,
         email: email,
