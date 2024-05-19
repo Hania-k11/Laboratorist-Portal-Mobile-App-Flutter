@@ -38,7 +38,7 @@ class report extends StatelessWidget {
         children: [
           Center(
             child: Image.asset(
-              'assets/images/Group 89.png ',
+              'assets/images/report1.png ',
               fit: BoxFit.contain,
               height: MediaQuery.of(context).size.height * 0.8, // Adjust the size of the image
             ),
