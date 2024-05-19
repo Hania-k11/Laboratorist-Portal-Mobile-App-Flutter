@@ -16,6 +16,7 @@ class Login extends StatelessWidget {
   var gender;
   var age;
  var laboratorist_ID;
+ var reportid;
 
   TextEditingController _nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();

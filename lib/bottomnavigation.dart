@@ -4,6 +4,8 @@ import 'package:laboratorymodule/signout.dart';
 import 'package:laboratorymodule/tests.dart';
 import 'package:laboratorymodule/viewreport.dart';
 
+import 'apifunctions.dart';
+
 class BottomNavigation extends StatelessWidget {
   final String userName;
   final String email;
@@ -13,6 +15,7 @@ class BottomNavigation extends StatelessWidget {
   final String workingdays;
   final int laboratorist_ID;
 
+
   const BottomNavigation({Key? key, required this.userName,
   required this.age,
     required this.email,
@@ -20,6 +23,7 @@ class BottomNavigation extends StatelessWidget {
     required this.shifttiming,
     required this.workingdays,
     required this.laboratorist_ID,
+
   }) : super(key: key);
 
   @override
@@ -48,7 +52,8 @@ class BottomNavigation extends StatelessWidget {
                 context,
                   MaterialPageRoute(
                   builder: (context) => Dashboard(userName: userName, email: email, gender: gender,
-                      age: age, shifttiming: shifttiming, workingdays: workingdays, laboratorist_ID: laboratorist_ID)),
+                      age: age, shifttiming: shifttiming, workingdays: workingdays, laboratorist_ID: laboratorist_ID,
+               )),
 
               );
             }, 'assets/images/homeicon.png'),
@@ -64,7 +69,8 @@ class BottomNavigation extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => viewreport(userName: userName, email: email, gender: gender,
-                    age: age, shifttiming: shifttiming, workingdays: workingdays, laboratorist_ID:laboratorist_ID)),
+                    age: age, shifttiming: shifttiming, workingdays: workingdays, laboratorist_ID:laboratorist_ID,
+                )),
               );
             }, 'assets/images/reporticon.png'),
             _buildIconButton(() {

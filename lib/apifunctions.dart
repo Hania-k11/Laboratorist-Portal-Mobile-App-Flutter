@@ -5,8 +5,45 @@ import 'package:http/http.dart' as http;
 import 'package:laboratorymodule/dashboard.dart';
 
 var ip = "192.168.18.5";
-
+//var reportid;
 //fetching all tests
+
+Future<bool> reportfail( reportid, String pass) async {
+  print("function hoon");
+  final url = Uri.parse('http://$ip:8000/fetchpatientreport/$reportid');
+  print(url);
+  final Map<String, String> headers = {'Content-Type': 'application/json'};
+  print("h");
+
+  try {
+    final response = await http.get(url, headers: headers);
+    print("Response status code: ${response.statusCode}");
+    print("Response body: ${response.body}");
+    //print(emailaddress);
+    //print(password);
+    if (response.statusCode == 200) {
+      print("im here");
+      Map<String, dynamic> jsonData = json.decode(response.body);
+      if (jsonData.isNotEmpty) {
+
+        //  print(passwords);
+        //print(email);
+        //String gender = jsonData['gender']; // Assuming gender is a field in your database
+        return reportid == reportid ;
+      } else {
+        print("No report available");
+        return false;
+      }
+    } else {
+      print(
+          "Failed to fetch data from the API. Status code: ${response.statusCode}");
+      return false;
+    }
+  } catch (e) {
+    print("An error occurred while making the HTTP request: $e");
+    return false;
+  }
+}
 Future<List< dynamic>> patient111(laboratorist_ID) async {
   print('patient111');
   final url = Uri.parse('http://$ip:8000/fetchpatientreportinfo/$laboratorist_ID');

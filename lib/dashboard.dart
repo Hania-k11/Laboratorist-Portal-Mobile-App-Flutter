@@ -13,6 +13,7 @@ class Dashboard extends StatelessWidget {
   final String workingdays;
   final int laboratorist_ID;
 
+
   const Dashboard({
     Key? key,
     required this.userName,
@@ -22,6 +23,7 @@ class Dashboard extends StatelessWidget {
     required this.shifttiming,
     required this.workingdays,
     required this.laboratorist_ID,
+
   }) : super(key: key);
 
   @override
@@ -89,6 +91,10 @@ class Dashboard extends StatelessWidget {
             SizedBox(height: 10),
             Stack(
               children: [
+
+
+                // New Positioned widget for the Image.asset
+
                 Image.asset(
                   'assets/images/dashboard.png', // Replace with your image path
                   width: 900,
@@ -118,7 +124,7 @@ class Dashboard extends StatelessWidget {
                         },
                         style: ButtonStyle(
                           backgroundColor:
-                              MaterialStateProperty.all(Colors.transparent),
+                          MaterialStateProperty.all(Colors.transparent),
                           padding: MaterialStateProperty.all(EdgeInsets.zero),
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
@@ -145,22 +151,13 @@ class Dashboard extends StatelessWidget {
                                     age: age,
                                     shifttiming: shifttiming,
                                     workingdays: workingdays,
-                                    laboratorist_ID:laboratorist_ID)),
+                                    laboratorist_ID: laboratorist_ID,
+                               )),
                           );
-
-                          // fetch();
-                          // fetch_login();
-
-                          // Add your onPressed logic here
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //       builder: (context) => viewreport()),
-                          // );
                         },
                         style: ButtonStyle(
                           backgroundColor:
-                              MaterialStateProperty.all(Colors.transparent),
+                          MaterialStateProperty.all(Colors.transparent),
                           padding: MaterialStateProperty.all(EdgeInsets.zero),
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
@@ -177,19 +174,63 @@ class Dashboard extends StatelessWidget {
                     ],
                   ),
                 ),
+                Positioned(
+                  top: 440,
+                  left: 190,
+                  child: Image.asset(
+                    'assets/images/chatbot.png', // Replace with your image path
+                    width: 200,
+                    height: 175,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Positioned(
+                  top: 445,
+                  left: 200,
+                  child: TextButton(
+                    onPressed: () {
+                      // Add your onPressed logic here
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.transparent),
+                      padding: MaterialStateProperty.all(EdgeInsets.zero),
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    child: Text(
+                      'Chat Now!',
+                      style: TextStyle(
+                        color: Colors.white, // Orange color
+                        fontSize: 21,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.bold,
+                        shadows: [
+                          Shadow(
+                            blurRadius: 10.0,
+                            color: Colors.black.withOpacity(0.5),
+                            offset: Offset(2.0, 2.0),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                // New Positioned widget for the TextButton
+
+
               ],
             ),
           ],
         ),
       ),
       bottomNavigationBar: BottomNavigation(
-          userName: userName,
-          email: email,
-          gender: gender,
-          age: age,
-          shifttiming: shifttiming,
-          workingdays: workingdays,
-          laboratorist_ID:laboratorist_ID,
+        userName: userName,
+        email: email,
+        gender: gender,
+        age: age,
+        shifttiming: shifttiming,
+        workingdays: workingdays,
+        laboratorist_ID: laboratorist_ID,
+
       ),
     );
   }

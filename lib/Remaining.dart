@@ -28,6 +28,7 @@ class Remaining extends StatelessWidget {
   final String workingdays;
   final int laboratorist_ID;
 
+
   const Remaining({
     Key? key,
     required this.userName,
@@ -37,6 +38,7 @@ class Remaining extends StatelessWidget {
     required this.shifttiming,
     required this.workingdays,
     required this.laboratorist_ID,
+
   }) : super(key: key);
 
 //1

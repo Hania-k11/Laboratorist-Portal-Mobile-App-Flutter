@@ -27,6 +27,7 @@ class CompletedScreen extends StatelessWidget {
   final String workingdays;
   final int laboratorist_ID;
 
+
   const CompletedScreen({
     Key? key,
     required this.userName,
@@ -36,6 +37,7 @@ class CompletedScreen extends StatelessWidget {
     required this.shifttiming,
     required this.workingdays,
     required this.laboratorist_ID,
+
   }) : super(key: key);
 
 //1
@@ -125,7 +127,8 @@ class CompletedScreen extends StatelessWidget {
                       age: age,
                       shifttiming: shifttiming,
                       workingdays: workingdays,
-                        laboratorist_ID: laboratorist_ID)), // Navigate to Login screen
+                        laboratorist_ID: laboratorist_ID,
+                   )), // Navigate to Login screen
                   );
                   // Add onPressed functionality here
                 },
@@ -342,7 +345,8 @@ class CompletedScreen extends StatelessWidget {
           age: age,
           shifttiming: shifttiming,
           workingdays: workingdays,
-          laboratorist_ID: laboratorist_ID),
+          laboratorist_ID: laboratorist_ID,
+      ),
     );
   }
 }
