@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:laboratorymodule/apifunctions.dart';
+import 'package:laboratorymodule/viewreport.dart';
 
 import 'apifunctions.dart';
 import 'bottomnavigation.dart';
@@ -27,6 +28,7 @@ class report extends StatelessWidget {
      required this.shifttiming,
      required this.workingdays,
      required this.laboratorist_ID,
+
   }) : super(key: key);
 
 
@@ -55,7 +57,7 @@ class report extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  'Female',
+                  patientGender,
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 9,
@@ -63,7 +65,7 @@ class report extends StatelessWidget {
                 ),
                 SizedBox(width: 115),
                 Text(
-                  '2023-06-16',
+                  '',
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 9,
@@ -81,7 +83,7 @@ class report extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  '20',
+                  patientAge,
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 9,
@@ -89,7 +91,7 @@ class report extends StatelessWidget {
                 ),
                 SizedBox(width: 163),
                 Text(
-                  '0309289302',
+                  patientContact,
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 9,
@@ -103,7 +105,7 @@ class report extends StatelessWidget {
             left: 75,
             top: 275,
             child:Text(
-              'Dr. Adams',
+              refBy,
               style: TextStyle(
                 fontFamily: 'Poppins',
                 fontSize: 9,
@@ -115,7 +117,7 @@ class report extends StatelessWidget {
             left: 302,
             top: 372,
             child:Text(
-              '11.0-11.0',
+              Child1,
               style: TextStyle(
                 fontFamily: 'Poppins',
                 fontSize: 7,
@@ -127,7 +129,7 @@ class report extends StatelessWidget {
             left: 302,
             top: 410,
             child:Text(
-              '12.0-13.0',
+              Child2,
               style: TextStyle(
                 fontFamily: 'Poppins',
                 fontSize: 7,
@@ -139,7 +141,7 @@ class report extends StatelessWidget {
             left: 302,
             top: 444,
             child:Text(
-              '13.0-13.0',
+              Child3,
               style: TextStyle(
                 fontFamily: 'Poppins',
                 fontSize: 7,
@@ -151,7 +153,7 @@ class report extends StatelessWidget {
             left: 48,
             top: 315,
             child:Text(
-              'Thyroid Test',
+              testName,
               style: TextStyle(
                 fontFamily: 'Poppins',
                 fontSize: 11,
@@ -165,7 +167,7 @@ class report extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  'Zainab Rauf',
+                  patientName,
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 9,
@@ -173,7 +175,7 @@ class report extends StatelessWidget {
                 ),
                 SizedBox(width: 82),
                 Text(
-                  '201',
+                  reportId.toString(),
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 9,
@@ -183,13 +185,13 @@ class report extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10),
-          Positioned(
+           Positioned(
             left: 79,
             top: 248,
             child: Row(
               children: [
                 Text(
-                  'Female',
+                  patientGender,
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 9,
@@ -197,7 +199,7 @@ class report extends StatelessWidget {
                 ),
                 SizedBox(width: 115),
                 Text(
-                  '2023-06-16',
+                  testDate,
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 9,
@@ -213,7 +215,7 @@ class report extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  '20',
+                  patientAge,
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 9,
@@ -221,7 +223,7 @@ class report extends StatelessWidget {
                 ),
                 SizedBox(width: 163),
                 Text(
-                  '0309289302',
+                  patientContact,
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 9,
@@ -242,17 +244,18 @@ class report extends StatelessWidget {
       children: <Widget>[
         SizedBox(height: 325),
         Text(
-          'BUN',
+          Component1,
           style: TextStyle(fontSize: 9.0), // Adjust font size for row 1
         ),
         SizedBox(height: 30),
         Text(
-          'Creatinine',
+          Component2,
           style: TextStyle(fontSize: 9.0), // Adjust font size for row 2
         ),
         SizedBox(height: 30),
         Text(
-          'GFR',
+          Component3,
+
           style: TextStyle(fontSize: 9.0), // Adjust font size for row 3
         ),
       ],
@@ -266,17 +269,17 @@ class report extends StatelessWidget {
       children: <Widget>[
         SizedBox(height: 325),
         Text(
-          '1.5',
+          Result1,
           style: TextStyle(fontSize: 9.0), // Adjust font size for row 1
         ),
         SizedBox(height: 30),
         Text(
-          '0.6',
+          Result2,
           style: TextStyle(fontSize: 9.0), // Adjust font size for row 2
         ),
         SizedBox(height: 30),
         Text(
-          '10.1',
+          Result3,
           style: TextStyle(fontSize: 9.0), // Adjust font size for row 3
         ),
       ],
@@ -291,17 +294,17 @@ class report extends StatelessWidget {
           children: <Widget>[
             SizedBox(height: 325),
             Text(
-              'ug/ml',
+              Unit1,
               style: TextStyle(fontSize: 9.0), // Adjust font size for row 1
             ),
             SizedBox(height: 30),
             Text(
-              'mm/bn',
+              Unit2,
               style: TextStyle(fontSize: 9.0), // Adjust font size for row 2
             ),
             SizedBox(height: 30),
             Text(
-              'mm/cl',
+              Unit3,
               style: TextStyle(fontSize: 9.0), // Adjust font size for row 3
             ),
           ],
@@ -316,17 +319,17 @@ class report extends StatelessWidget {
           children: <Widget>[
             SizedBox(height: 347),
             Text(
-              '0.3-9.0',
+              Adult1,
               style: TextStyle(fontSize: 7.0), // Adjust font size for row 1
             ),
             SizedBox(height: 25),
             Text(
-              '10.0-8.9',
+              Adult2,
               style: TextStyle(fontSize: 7.0), // Adjust font size for row 2
             ),
             SizedBox(height: 27),
             Text(
-              '2.0-9.0',
+              Adult3,
               style: TextStyle(fontSize: 7.0), // Adjust font size for row 3
             ),
           ],

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
@@ -6,9 +7,12 @@ import 'package:laboratorymodule/apifunctions.dart';
 import 'package:laboratorymodule/bottomnavigation.dart';
 import 'package:laboratorymodule/testdescription.dart';
 import 'package:laboratorymodule/CompleteScreen.dart';
+import 'package:http/http.dart' as http;
+import 'package:laboratorymodule/apifunctions.dart';
 
 import 'WhiteBoxIndicator.dart';
 
+int patientIDforupdate=0;
 //List<String> test = [
 // "Thyroid-Stimulating Hormone (TSH)",
 // "Thyroglobulin Antibodies (TgAb)",
@@ -112,7 +116,7 @@ class tests extends StatelessWidget {
                             age: age,
                             shifttiming: shifttiming,
                             workingdays: workingdays,
-                              laboratorist_ID: laboratorist_ID,
+                            laboratorist_ID: laboratorist_ID,
                           ),
                     ), // Navigate to Login screen
                   );
@@ -133,7 +137,7 @@ class tests extends StatelessWidget {
                             age: age,
                             shifttiming: shifttiming,
                             workingdays: workingdays,
-                              laboratorist_ID: laboratorist_ID,
+                            laboratorist_ID: laboratorist_ID,
                           ),
                     ), // Navigate to Login screen
                   );
@@ -174,6 +178,8 @@ class tests extends StatelessWidget {
                         final component2 = item['component2'];
                         final component3 = item['component3'];
                         final testStatus = item['teststatus'];
+                        patientIDforupdate = item ['patientid'];
+
                         final testId = item['id'];
                         // print(item['patientname']);
 
@@ -242,27 +248,26 @@ class tests extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment
                                       .spaceBetween,
                                   children: [
-                        ElevatedButton(
-                        onPressed: item['teststatus'] == 'Completed'
-                        ? null
-                            : () async {
-                        await updateTestStatus(item['patientid'], 'Completed');
-                        // Rebuild the widget to reflect the updated status
-                        (context as Element).reassemble();
-                        },
-                        style: ElevatedButton.styleFrom(
-                        backgroundColor: item['teststatus'] == 'Completed'
-                        ? Colors.grey
-                            : Colors.pink,
-                        shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        ),
-                        child: Text(
-                        item['teststatus'],
-                        style: TextStyle(color: Colors.white),
-                        ),
-                        ),
+                                    ElevatedButton(
+                                      onPressed: item['teststatus'] == 'Completed'
+                                          ? null
+                                          : () {updateTestStatus(item['patientid']);
+                                        // Rebuild the widget to reflect the updated status
+                                        (context as Element).reassemble();
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: item['teststatus'] == 'Completed'
+                                            ? Colors.grey
+                                            : Colors.pink,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(20.0),
+                                        ),
+                                      ),
+                                      child: Text(
+                                        item['teststatus'],
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
                                     TextButton(
                                       onPressed: () {
                                         // Define what happens when the button is pressed
@@ -285,7 +290,7 @@ class tests extends StatelessWidget {
                                                   Component1: component1,
                                                   Component2: component2,
                                                   Component3: component3,
-                                                    laboratorist_ID: laboratorist_ID,
+                                                  laboratorist_ID: laboratorist_ID,
                                                 ),
                                           ),
                                         );
@@ -322,12 +327,12 @@ class tests extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomNavigation(
-        userName: userName,
-        email: email,
-        gender: gender,
-        age: age,
-        shifttiming: shifttiming,
-        workingdays: workingdays,
+          userName: userName,
+          email: email,
+          gender: gender,
+          age: age,
+          shifttiming: shifttiming,
+          workingdays: workingdays,
           laboratorist_ID: laboratorist_ID
       ),
     );

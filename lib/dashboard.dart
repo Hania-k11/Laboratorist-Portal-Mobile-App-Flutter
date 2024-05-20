@@ -3,6 +3,7 @@ import 'package:laboratorymodule/apifunctions.dart';
 import 'package:laboratorymodule/bottomnavigation.dart';
 import 'package:laboratorymodule/tests.dart';
 import 'package:laboratorymodule/viewreport.dart';
+import 'package:laboratorymodule/HomePage.dart';
 
 class Dashboard extends StatelessWidget {
   final String userName;
@@ -13,7 +14,6 @@ class Dashboard extends StatelessWidget {
   final String workingdays;
   final int laboratorist_ID;
 
-
   const Dashboard({
     Key? key,
     required this.userName,
@@ -23,7 +23,6 @@ class Dashboard extends StatelessWidget {
     required this.shifttiming,
     required this.workingdays,
     required this.laboratorist_ID,
-
   }) : super(key: key);
 
   @override
@@ -91,8 +90,6 @@ class Dashboard extends StatelessWidget {
             SizedBox(height: 10),
             Stack(
               children: [
-
-
                 // New Positioned widget for the Image.asset
 
                 Image.asset(
@@ -124,7 +121,7 @@ class Dashboard extends StatelessWidget {
                         },
                         style: ButtonStyle(
                           backgroundColor:
-                          MaterialStateProperty.all(Colors.transparent),
+                              MaterialStateProperty.all(Colors.transparent),
                           padding: MaterialStateProperty.all(EdgeInsets.zero),
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
@@ -145,19 +142,19 @@ class Dashboard extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => viewreport(
-                                    userName: userName,
-                                    email: email,
-                                    gender: gender,
-                                    age: age,
-                                    shifttiming: shifttiming,
-                                    workingdays: workingdays,
-                                    laboratorist_ID: laboratorist_ID,
-                               )),
+                                      userName: userName,
+                                      email: email,
+                                      gender: gender,
+                                      age: age,
+                                      shifttiming: shifttiming,
+                                      workingdays: workingdays,
+                                      laboratorist_ID: laboratorist_ID,
+                                    )),
                           );
                         },
                         style: ButtonStyle(
                           backgroundColor:
-                          MaterialStateProperty.all(Colors.transparent),
+                              MaterialStateProperty.all(Colors.transparent),
                           padding: MaterialStateProperty.all(EdgeInsets.zero),
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
@@ -189,10 +186,15 @@ class Dashboard extends StatelessWidget {
                   left: 200,
                   child: TextButton(
                     onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const HomePage()),
+                      );
                       // Add your onPressed logic here
                     },
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.transparent),
+                      backgroundColor:
+                          MaterialStateProperty.all(Colors.transparent),
                       padding: MaterialStateProperty.all(EdgeInsets.zero),
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     ),
@@ -215,8 +217,6 @@ class Dashboard extends StatelessWidget {
                   ),
                 ),
                 // New Positioned widget for the TextButton
-
-
               ],
             ),
           ],
@@ -230,7 +230,6 @@ class Dashboard extends StatelessWidget {
         shifttiming: shifttiming,
         workingdays: workingdays,
         laboratorist_ID: laboratorist_ID,
-
       ),
     );
   }

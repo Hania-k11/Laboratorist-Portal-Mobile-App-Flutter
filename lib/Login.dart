@@ -6,7 +6,8 @@ import 'package:http/http.dart' as http;
 import 'package:laboratorymodule/apifunctions.dart';
 
 //var ip = "192.168.18.5";
-//var laboratorist_ID;
+var laboratorist_ID;
+int laboratorist_IDDD=0;
 class Login extends StatelessWidget {
   var emailaddress = '';
   var password = '';
@@ -15,7 +16,7 @@ class Login extends StatelessWidget {
   var workingdays = '';
   var gender;
   var age;
- var laboratorist_ID;
+ //int laboratorist_ID=0;
  var reportid;
 
   TextEditingController _nameController = TextEditingController();
@@ -46,6 +47,7 @@ class Login extends StatelessWidget {
           gender = jsonData['gender'];
           age = jsonData['age'];
           laboratorist_ID = jsonData['laboratorist_ID'];
+        // laboratorist_IDDD = jsonData['laboratorist_ID'.toString()];
           //  print(passwords);
           //print(email);
           //String gender = jsonData['gender']; // Assuming gender is a field in your database
@@ -133,7 +135,7 @@ class Login extends StatelessWidget {
                         age: age,
                         shifttiming: shifttiming,
                         workingdays: workingdays,
-                          laboratorist_ID: laboratorist_ID,
+                       laboratorist_ID: laboratorist_ID,
 
                       ),
                     ),

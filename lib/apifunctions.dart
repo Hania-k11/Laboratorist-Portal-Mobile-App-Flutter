@@ -104,27 +104,23 @@ Future<void> Updateteststatus(teststatus) async {
     }
   };
 }
-Future<void> updateTestStatus(int patientId, String testStatus) async {
-  final apiUrl = 'http://$ip:8000/updatetestinfostatus/$patientId'; // Replace with your actual API URL
-  final headers = {
-    'Content-Type': 'application/json',
-  };
-
-  final requestBody = jsonEncode({
-    "patientid": patientId,
-    "teststatus": testStatus,
-  });
-
+Future<void> updateTestStatus(int patientID) async {
+  final url = Uri.parse('http://$ip:8000/statusssupdateee/$patientID'); // Replace with your actual API URL
+ // Replace with your actual API URL
+  final Map<String, String> headers = {'Content-Type': 'application/json'};
   final response = await http.put(
-    Uri.parse(apiUrl),
+    url,
     headers: headers,
-    body: requestBody,
   );
-
+print("in update func api");
+print(response.body);
+print("-------");
   if (response.statusCode == 200) {
-    print('Test status updated successfully');
+    final jsonResponse = json.decode(response.body);
+    print(jsonResponse.toString());
+    // You might want to handle the updated status here, e.g., updating the state in your Flutter app
   } else {
-    print('Failed to update test status: ${response.body}');
+    throw Exception('Failed to update status');
   }
 }
 

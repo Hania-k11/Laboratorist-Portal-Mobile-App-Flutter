@@ -70,6 +70,7 @@ class BottomNavigation extends StatelessWidget {
                 context,
                 MaterialPageRoute(builder: (context) => viewreport(userName: userName, email: email, gender: gender,
                     age: age, shifttiming: shifttiming, workingdays: workingdays, laboratorist_ID:laboratorist_ID,
+
                 )),
               );
             }, 'assets/images/reporticon.png'),

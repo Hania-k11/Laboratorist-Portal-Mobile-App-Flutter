@@ -241,7 +241,7 @@ class Remaining extends StatelessWidget {
                                           onPressed: item['teststatus'] == 'Completed'
                                               ? null
                                               : () async {
-                                            await updateTestStatus(item['patientid'], 'Completed');
+                                            await updateTestStatus(patientIDforupdate);
                                             // Rebuild the widget to reflect the updated status
                                             (context as Element).reassemble();
                                           },

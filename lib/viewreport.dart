@@ -5,7 +5,39 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:laboratorymodule/apifunctions.dart';
 import 'package:laboratorymodule/report.dart';
+import 'Login.dart';
 import 'bottomnavigation.dart';
+
+
+var reportId = '';
+var patientName = '';
+var patientAge = '';
+var patientGender = '';
+var patientContact = '';
+var testName = '';
+var testDate = '';
+var testTime = '';
+var Component1 = '';
+var Component2 ='';
+var Component3 = '';
+var Result1 = '';
+var Result2 = '';
+var Result3 = '';
+var Unit1 = '';
+var Unit2 = '';
+var Unit3 = '';
+var Adult1 = '';
+var Adult2 = '';
+var Adult3 = '';
+var Child1 = '';
+var Child2 = '';
+var Child3 = '';
+var reportDate = '';
+var refBy = '';
+
+
+
+
 
 class viewreport extends StatelessWidget {
   final String userName;
@@ -27,11 +59,13 @@ class viewreport extends StatelessWidget {
     required this.workingdays,
     required this.laboratorist_ID,
 
+
   }) : super(key: key);
 
   TextEditingController _reportController = TextEditingController();
 
-  Future<bool> reportCheck(String reportid, int laboratorist_ID) async {
+
+  Future<bool> reportCheck(String reportid, int laboratorist_IDD) async {
     final url = Uri.parse('http://$ip:8000/fetchpatientreport/$reportid');
     final Map<String, String> headers = {'Content-Type': 'application/json'};
 
@@ -50,10 +84,38 @@ class viewreport extends StatelessWidget {
           //  print(laboratorist_ID);
           // return laboratorist == laboratorist_ID;
 
-          String reportId = jsonData['reportid'];
+           reportId = jsonData['reportid'];
+          patientName = jsonData['patientname'];
+           patientAge = jsonData['patientage'];
+           patientGender = jsonData['patientgender'];
+            patientContact = jsonData['patientcontact'];
+           testName = jsonData['testname'];
+            testDate = jsonData['testdate'];
+           testTime = jsonData['testtime'];
+           Component1 = jsonData['component1'];
+            Component2 =jsonData['component2'];
+            Component3 = jsonData['component3'];
+            Result1 = jsonData['result1'];
+            Result2 = jsonData['result2'];
+            Result3 = jsonData['result3'];
+           Unit1 = jsonData['unit1'];
+           Unit2 = jsonData['unit2'];
+            Unit3 = jsonData['unit3'];
+          Adult1 = jsonData['adult1'];
+           Adult2 = jsonData['adult2'];
+            Adult3 = jsonData['adult3'];
+            Child1 = jsonData['child1'];
+            Child2 = jsonData['child2'];
+           Child3 = jsonData['child3'];
+            reportDate = jsonData['reportdate'];
+            refBy = jsonData['refby'];
 
 
-          return reportId == reportid && laboratorist_ID == laboratorist_ID;
+            print(userName);
+           print(laboratorist_IDD);
+           print(laboratorist_ID);
+           return reportId == reportid && laboratorist_IDDD == laboratorist_IDD;
+           print(laboratorist_IDD);
         } else {
           print("No data found for the given email address.");
           return false;
@@ -220,6 +282,8 @@ class viewreport extends StatelessWidget {
                         shifttiming: shifttiming,
                         workingdays: workingdays,
                         laboratorist_ID: laboratorist_ID,
+
+                       // reportId : reportId.toString(),
                       )),
                     );
                   }

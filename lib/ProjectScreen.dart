@@ -1,11 +1,18 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
+import 'package:laboratorymodule/HomePage.dart';
 import 'package:laboratorymodule/Login.dart';
 import 'package:laboratorymodule/apifunctions.dart';
+import 'package:laboratorymodule/main.dart';
+
+import 'consts.dart';
+
 
 class ProjectScreen extends StatelessWidget {
   const ProjectScreen({Key? key});
+
 
   @override
   Widget build(BuildContext context) {
