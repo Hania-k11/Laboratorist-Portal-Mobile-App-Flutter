@@ -52,14 +52,14 @@ class CompletedScreen extends StatelessWidget {
           padding: EdgeInsets.only(left: 9.0), // Adjust the padding here
           child: CircleAvatar(
             radius: 20, // Adjust the size here
-            backgroundImage: AssetImage('assets/images/avatarfemale.png'),
+            backgroundImage: AssetImage('assets/images/pro1.png'),
           ),
         ),
         actions: [
           IconButton(
             onPressed: () {},
             icon: Image.asset(
-              'assets/images/heart.png',
+              'assets/images/logo.png',
               width: 40,
               height: 40,
             ),
@@ -186,7 +186,7 @@ class CompletedScreen extends StatelessWidget {
                                       children: [
                                         CircleAvatar(
                                           backgroundImage: AssetImage(
-                                              'assets/images/avatarfemale.png'),
+                                              'assets/images/pro3.png'),
                                         ),
                                         SizedBox(width: 20.0),
                                         Text(patientname),

@@ -66,7 +66,7 @@ class viewreport extends StatelessWidget {
 
 
   Future<bool> reportCheck(String reportid, int laboratorist_IDD) async {
-    final url = Uri.parse('http://$ip:8000/fetchpatientreport/$reportid');
+    final url = Uri.parse('http://$ip:8000/fetchpatientreportid/$reportid/$laboratorist_IDD');
     final Map<String, String> headers = {'Content-Type': 'application/json'};
 
     try {
@@ -76,7 +76,7 @@ class viewreport extends StatelessWidget {
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonData = json.decode(response.body);
 
-        print(response.body);
+       //2 print(response.body);
         if (jsonData.isNotEmpty) {
           // String laboratorist = laboratorist_ID.toString();
           //  laboratorist = jsonData['laboratoristid'.toString()];
@@ -113,7 +113,7 @@ class viewreport extends StatelessWidget {
 
             print(userName);
            print(laboratorist_IDD);
-           print(laboratorist_ID);
+           print(laboratorist_IDDD);
            return reportId == reportid && laboratorist_IDDD == laboratorist_IDD;
            print(laboratorist_IDD);
         } else {
@@ -140,11 +140,11 @@ class viewreport extends StatelessWidget {
         child: Stack(
           children: [
             Positioned(
-              left: 17,
+              left: 8,
               top: 40,
               child: CircleAvatar(
                 radius: 25,
-                backgroundImage: AssetImage('assets/images/avatarfemale.png'),
+                backgroundImage: AssetImage('assets/images/pro1.png'),
               ),
             ),
             Positioned(
@@ -154,7 +154,7 @@ class viewreport extends StatelessWidget {
                 splashRadius: 35,
                 onPressed: () {},
                 icon: Image.asset(
-                  'assets/images/heart.png',
+                  'assets/images/logo.png',
                   width: 40,
                   height: 40,
                 ),
@@ -242,8 +242,8 @@ class viewreport extends StatelessWidget {
                   //    ),
                   //  ),
                   Container(
-                    width: 353,
-                    height: 45,
+                    width: 355,
+                    height: 46,
                     padding: const EdgeInsets.only(left: 2),
                     child: TextField(
                       controller: _reportController,
@@ -269,8 +269,11 @@ class viewreport extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () async {
                   print(_reportController);
+
                   var auth = await reportCheck(
-                      _reportController.text, laboratorist_ID);
+                      _reportController.text, laboratorist_IDDD);
+                  print("lab1sss: $laboratorist_IDDD");
+                  print(auth);
                   if (auth) {
                     Navigator.push(
                       context,

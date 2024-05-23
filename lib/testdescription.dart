@@ -50,14 +50,14 @@ class testdescription extends StatelessWidget {
           padding: EdgeInsets.only(left: 9.0), // Adjust the padding here
           child: CircleAvatar(
             radius: 20, // Adjust the size here
-            backgroundImage: AssetImage('assets/images/avatarfemale.png'),
+            backgroundImage: AssetImage('assets/images/pro1.png'),
           ),
         ),
         actions: [
           IconButton(
             onPressed: () {},
             icon: Image.asset(
-              'assets/images/heart.png',
+              'assets/images/logo.png',
               width: 40,
               height: 40,
             ),

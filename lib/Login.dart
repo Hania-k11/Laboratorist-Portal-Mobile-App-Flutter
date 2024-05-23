@@ -47,6 +47,7 @@ class Login extends StatelessWidget {
           gender = jsonData['gender'];
           age = jsonData['age'];
           laboratorist_ID = jsonData['laboratorist_ID'];
+          laboratorist_IDDD = jsonData['laboratorist_ID'];
         // laboratorist_IDDD = jsonData['laboratorist_ID'.toString()];
           //  print(passwords);
           //print(email);

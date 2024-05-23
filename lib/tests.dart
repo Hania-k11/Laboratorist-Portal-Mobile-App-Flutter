@@ -8,22 +8,15 @@ import 'package:laboratorymodule/bottomnavigation.dart';
 import 'package:laboratorymodule/testdescription.dart';
 import 'package:laboratorymodule/CompleteScreen.dart';
 import 'package:http/http.dart' as http;
-import 'package:laboratorymodule/apifunctions.dart';
 
 import 'WhiteBoxIndicator.dart';
 
-int patientIDforupdate=0;
-//List<String> test = [
-// "Thyroid-Stimulating Hormone (TSH)",
-// "Thyroglobulin Antibodies (TgAb)",
-// "Thyroid Peroxidase Antibodies (TPOAb)",
-//"Triiodothyronine (T3)",
-//"Thyroxine (T4)"
-//];
+int patientIDforupdate = 0;
 var component1;
 var component2;
 var patientname;
-class tests extends StatelessWidget {
+
+class tests extends StatefulWidget {
   final String userName;
   final String email;
   final String gender;
@@ -43,8 +36,30 @@ class tests extends StatelessWidget {
     required this.laboratorist_ID,
   }) : super(key: key);
 
-//1
-  //haniascreen
+  @override
+  _TestsState createState() => _TestsState();
+}
+
+class _TestsState extends State<tests> {
+  Future<void> updateTestStatus(int patientID) async {
+    final url = Uri.parse('http://$ip:8000/statusssupdateee/$patientID'); // Replace with your actual API URL
+    final Map<String, String> headers = {'Content-Type': 'application/json'};
+    final response = await http.put(
+      url,
+      headers: headers,
+    );
+    ("apu fun");
+    print(response.body);
+    if (response.statusCode == 200) {
+      final jsonResponse = json.decode(response.body);
+      print(jsonResponse.toString());
+      setState(() {
+        // Rebuild the widget to reflect the changes
+      });
+    } else {
+      throw Exception('Failed to update status');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,14 +70,14 @@ class tests extends StatelessWidget {
           padding: EdgeInsets.only(left: 9.0), // Adjust the padding here
           child: CircleAvatar(
             radius: 20, // Adjust the size here
-            backgroundImage: AssetImage('assets/images/avatarfemale.png'),
+            backgroundImage: AssetImage('assets/images/pro1.png'),
           ),
         ),
         actions: [
           IconButton(
             onPressed: () {},
             icon: Image.asset(
-              'assets/images/heart.png',
+              'assets/images/logo.png',
               width: 40,
               height: 40,
             ),
@@ -104,21 +119,19 @@ class tests extends StatelessWidget {
               SizedBox(width: 10),
               ElevatedButton(
                 onPressed: () {
-                  // Add onPressed functionality here
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                          CompletedScreen(
-                            userName: userName,
-                            email: email,
-                            gender: gender,
-                            age: age,
-                            shifttiming: shifttiming,
-                            workingdays: workingdays,
-                            laboratorist_ID: laboratorist_ID,
-                          ),
-                    ), // Navigate to Login screen
+                      builder: (context) => CompletedScreen(
+                        userName: widget.userName,
+                        email: widget.email,
+                        gender: widget.gender,
+                        age: widget.age,
+                        shifttiming: widget.shifttiming,
+                        workingdays: widget.workingdays,
+                        laboratorist_ID: widget.laboratorist_ID,
+                      ),
+                    ),
                   );
                 },
                 child: Text('Completed'),
@@ -129,20 +142,17 @@ class tests extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                          Remaining(
-                            userName: userName,
-                            email: email,
-                            gender: gender,
-                            age: age,
-                            shifttiming: shifttiming,
-                            workingdays: workingdays,
-                            laboratorist_ID: laboratorist_ID,
-                          ),
-                    ), // Navigate to Login screen
+                      builder: (context) => Remaining(
+                        userName: widget.userName,
+                        email: widget.email,
+                        gender: widget.gender,
+                        age: widget.age,
+                        shifttiming: widget.shifttiming,
+                        workingdays: widget.workingdays,
+                        laboratorist_ID: widget.laboratorist_ID,
+                      ),
+                    ),
                   );
-
-                  // Add onPressed functionality here
                 },
                 child: Text('Remaining'),
               ),
@@ -155,7 +165,7 @@ class tests extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               // Adjust horizontal padding as needed
               child: FutureBuilder<List<dynamic>>(
-                future: patient111(laboratorist_ID),
+                future: patient111(widget.laboratorist_ID),
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
                     // Display an error message if fetching data failed
@@ -163,8 +173,6 @@ class tests extends StatelessWidget {
                   } else if (snapshot.hasData) {
                     // Display the data in a ListView
                     final data = snapshot.data!;
-                    // print(data);
-
                     return ListView.builder(
                       itemCount: data.length,
                       itemBuilder: (BuildContext context, int index) {
@@ -178,10 +186,7 @@ class tests extends StatelessWidget {
                         final component2 = item['component2'];
                         final component3 = item['component3'];
                         final testStatus = item['teststatus'];
-                        patientIDforupdate = item ['patientid'];
-
-                        final testId = item['id'];
-                        // print(item['patientname']);
+                        final patientID = item['patientid'];
 
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -197,16 +202,14 @@ class tests extends StatelessWidget {
                                 Row(
                                   children: [
                                     CircleAvatar(
-                                      backgroundImage: AssetImage(
-                                          'assets/images/avatarfemale.png'),
+                                      backgroundImage: AssetImage('assets/images/pro3.png'),
                                     ),
                                     SizedBox(width: 20.0),
                                     Text(patientName),
                                   ],
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 59.0),
+                                  padding: EdgeInsets.symmetric(horizontal: 59.0),
                                   child: Text(
                                     testName,
                                     style: TextStyle(
@@ -223,8 +226,7 @@ class tests extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 8.0),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment
-                                      .spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Row(
                                       children: [
@@ -245,15 +247,17 @@ class tests extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 8.0),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment
-                                      .spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     ElevatedButton(
                                       onPressed: item['teststatus'] == 'Completed'
                                           ? null
-                                          : () {updateTestStatus(item['patientid']);
+                                          : () async {
+                                        await updateTestStatus(patientID);
                                         // Rebuild the widget to reflect the updated status
-                                        (context as Element).reassemble();
+                                        setState(() {
+                                          item['teststatus'] = 'Completed';
+                                        });
                                       },
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: item['teststatus'] == 'Completed'
@@ -274,24 +278,23 @@ class tests extends StatelessWidget {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) =>
-                                                testdescription(
-                                                  userName: userName,
-                                                  email: email,
-                                                  gender: gender,
-                                                  age: age,
-                                                  shifttiming: shifttiming,
-                                                  workingdays: workingdays,
-                                                  testName: testName,
-                                                  patientName: patientName,
-                                                  patientAge: patientAge,
-                                                  patientGender: patientGender,
-                                                  testDate: testDate,
-                                                  Component1: component1,
-                                                  Component2: component2,
-                                                  Component3: component3,
-                                                  laboratorist_ID: laboratorist_ID,
-                                                ),
+                                            builder: (context) => testdescription(
+                                              userName: widget.userName,
+                                              email: widget.email,
+                                              gender: widget.gender,
+                                              age: widget.age,
+                                              shifttiming: widget.shifttiming,
+                                              workingdays: widget.workingdays,
+                                              testName: testName,
+                                              patientName: patientName,
+                                              patientAge: patientAge,
+                                              patientGender: patientGender,
+                                              testDate: testDate,
+                                              Component1: component1,
+                                              Component2: component2,
+                                              Component3: component3,
+                                              laboratorist_ID: widget.laboratorist_ID,
+                                            ),
                                           ),
                                         );
                                       },
@@ -312,7 +315,7 @@ class tests extends StatelessWidget {
                           ),
                         );
                       },
-                    ); //listview
+                    );
                   } else {
                     // Display a loading indicator while fetching data
                     return WhiteBoxIndicator(
@@ -327,13 +330,13 @@ class tests extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomNavigation(
-          userName: userName,
-          email: email,
-          gender: gender,
-          age: age,
-          shifttiming: shifttiming,
-          workingdays: workingdays,
-          laboratorist_ID: laboratorist_ID
+        userName: widget.userName,
+        email: widget.email,
+        gender: widget.gender,
+        age: widget.age,
+        shifttiming: widget.shifttiming,
+        workingdays: widget.workingdays,
+        laboratorist_ID: widget.laboratorist_ID,
       ),
     );
   }

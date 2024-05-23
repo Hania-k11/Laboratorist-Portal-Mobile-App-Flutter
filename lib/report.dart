@@ -19,15 +19,15 @@ class report extends StatelessWidget {
   final String shifttiming;
   final String workingdays;
   final int laboratorist_ID;
-   report({
+  report({
     Key? key,
-     required this.userName,
-     required this.age,
-     required this.email,
-     required this.gender,
-     required this.shifttiming,
-     required this.workingdays,
-     required this.laboratorist_ID,
+    required this.userName,
+    required this.age,
+    required this.email,
+    required this.gender,
+    required this.shifttiming,
+    required this.workingdays,
+    required this.laboratorist_ID,
 
   }) : super(key: key);
 
@@ -162,42 +162,55 @@ class report extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: 105,
+            left: 100,
             top: 235,
             child: Row(
               children: [
-                Text(
-                  patientName,
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 9,
+                Container(
+                  width:104,
+                  //color: Colors.blue,
+                  child: Text(
+                    patientName,
+
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 9,
+                     // color: Colors.pinkAccent,
+                    ),
                   ),
                 ),
-                SizedBox(width: 82),
+                SizedBox(width: 43),
                 Text(
                   reportId.toString(),
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 9,
+                  //  color: Colors.pink
                   ),
                 ),
               ],
             ),
           ),
           SizedBox(height: 10),
-           Positioned(
+          Positioned(
             left: 79,
             top: 248,
             child: Row(
               children: [
-                Text(
-                  patientGender,
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 9,
+                Container(
+                  width: 122,
+                //  color: Colors.yellow,
+                  child: Text(
+                    patientGender,
+
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 9,
+                      //color: Colors.pinkAccent
+                    ),
                   ),
                 ),
-                SizedBox(width: 115),
+                SizedBox(width: 30),
                 Text(
                   testDate,
                   style: TextStyle(
@@ -232,116 +245,116 @@ class report extends StatelessWidget {
               ],
             ),
           ),
-    Padding(
-    padding: const EdgeInsets.all(45.0),
-    child: Row(
-    mainAxisAlignment: MainAxisAlignment.start,
-    children: <Widget>[
-    Container(
-    width: 65,
-    margin: EdgeInsets.only(right: 5),
-    child: Column(
-      children: <Widget>[
-        SizedBox(height: 325),
-        Text(
-          Component1,
-          style: TextStyle(fontSize: 9.0), // Adjust font size for row 1
-        ),
-        SizedBox(height: 30),
-        Text(
-          Component2,
-          style: TextStyle(fontSize: 9.0), // Adjust font size for row 2
-        ),
-        SizedBox(height: 30),
-        Text(
-          Component3,
+          Padding(
+            padding: const EdgeInsets.all(45.0),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    width: 65,
+                    margin: EdgeInsets.only(right: 5),
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(height: 325),
+                        Text(
+                          Component1,
+                          style: TextStyle(fontSize: 9.0), // Adjust font size for row 1
+                        ),
+                        SizedBox(height: 30),
+                        Text(
+                          Component2,
+                          style: TextStyle(fontSize: 9.0), // Adjust font size for row 2
+                        ),
+                        SizedBox(height: 30),
+                        Text(
+                          Component3,
 
-          style: TextStyle(fontSize: 9.0), // Adjust font size for row 3
-        ),
-      ],
-    ),
-    ),
-      SizedBox(width: 30),
-    Container(
-    width: 40,
-    margin: EdgeInsets.only(right: 10),
-    child: Column(
-      children: <Widget>[
-        SizedBox(height: 325),
-        Text(
-          Result1,
-          style: TextStyle(fontSize: 9.0), // Adjust font size for row 1
-        ),
-        SizedBox(height: 30),
-        Text(
-          Result2,
-          style: TextStyle(fontSize: 9.0), // Adjust font size for row 2
-        ),
-        SizedBox(height: 30),
-        Text(
-          Result3,
-          style: TextStyle(fontSize: 9.0), // Adjust font size for row 3
-        ),
-      ],
-    ),
-    ),
-      SizedBox(width:10 ),
+                          style: TextStyle(fontSize: 9.0), // Adjust font size for row 3
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: 30),
+                  Container(
+                    width: 40,
+                    margin: EdgeInsets.only(right: 10),
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(height: 325),
+                        Text(
+                          Result1,
+                          style: TextStyle(fontSize: 9.0), // Adjust font size for row 1
+                        ),
+                        SizedBox(height: 30),
+                        Text(
+                          Result2,
+                          style: TextStyle(fontSize: 9.0), // Adjust font size for row 2
+                        ),
+                        SizedBox(height: 30),
+                        Text(
+                          Result3,
+                          style: TextStyle(fontSize: 9.0), // Adjust font size for row 3
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(width:10 ),
 
-      Container(
-        width: 40,
-        margin: EdgeInsets.only(right: 10),
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: 325),
-            Text(
-              Unit1,
-              style: TextStyle(fontSize: 9.0), // Adjust font size for row 1
-            ),
-            SizedBox(height: 30),
-            Text(
-              Unit2,
-              style: TextStyle(fontSize: 9.0), // Adjust font size for row 2
-            ),
-            SizedBox(height: 30),
-            Text(
-              Unit3,
-              style: TextStyle(fontSize: 9.0), // Adjust font size for row 3
-            ),
-          ],
-        ),
-      ),
-      SizedBox(width:24),
+                  Container(
+                    width: 40,
+                    margin: EdgeInsets.only(right: 10),
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(height: 325),
+                        Text(
+                          Unit1,
+                          style: TextStyle(fontSize: 9.0), // Adjust font size for row 1
+                        ),
+                        SizedBox(height: 30),
+                        Text(
+                          Unit2,
+                          style: TextStyle(fontSize: 9.0), // Adjust font size for row 2
+                        ),
+                        SizedBox(height: 30),
+                        Text(
+                          Unit3,
+                          style: TextStyle(fontSize: 9.0), // Adjust font size for row 3
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(width:24),
 
-      Container(
-        width: 29,
-        margin: EdgeInsets.only(right: 10),
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: 347),
-            Text(
-              Adult1,
-              style: TextStyle(fontSize: 7.0), // Adjust font size for row 1
-            ),
-            SizedBox(height: 25),
-            Text(
-              Adult2,
-              style: TextStyle(fontSize: 7.0), // Adjust font size for row 2
-            ),
-            SizedBox(height: 27),
-            Text(
-              Adult3,
-              style: TextStyle(fontSize: 7.0), // Adjust font size for row 3
-            ),
-          ],
-        ),
-      ),
-      SizedBox(width:10 ),
+                  Container(
+                    width: 29,
+                    margin: EdgeInsets.only(right: 10),
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(height: 347),
+                        Text(
+                          Adult1,
+                          style: TextStyle(fontSize: 7.0), // Adjust font size for row 1
+                        ),
+                        SizedBox(height: 25),
+                        Text(
+                          Adult2,
+                          style: TextStyle(fontSize: 7.0), // Adjust font size for row 2
+                        ),
+                        SizedBox(height: 27),
+                        Text(
+                          Adult3,
+                          style: TextStyle(fontSize: 7.0), // Adjust font size for row 3
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(width:10 ),
 
 
-  ]
+                ]
 
-    ),
-    ),
+            ),
+          ),
 
         ],
       ),

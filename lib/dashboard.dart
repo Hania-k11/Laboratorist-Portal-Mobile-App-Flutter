@@ -4,6 +4,9 @@ import 'package:laboratorymodule/bottomnavigation.dart';
 import 'package:laboratorymodule/tests.dart';
 import 'package:laboratorymodule/viewreport.dart';
 import 'package:laboratorymodule/HomePage.dart';
+import 'package:laboratorymodule/Support.dart';
+
+import 'Support.dart';
 
 class Dashboard extends StatelessWidget {
   final String userName;
@@ -34,13 +37,25 @@ class Dashboard extends StatelessWidget {
           padding: const EdgeInsets.only(left: 9.0),
           child: CircleAvatar(
             radius: 20,
-            backgroundImage: AssetImage('assets/images/avatarfemale.png'),
-          ),
+            backgroundImage: AssetImage('assets/images/pro1.png'),
+          )
         ),
         actions: [
           IconButton(
             onPressed: () {
-              patient00();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Support(
+                    userName: userName,
+                    email: email,
+                    gender: gender,
+                    age: age,
+                    shifttiming: shifttiming,
+                    workingdays: workingdays,
+                    laboratorist_ID: laboratorist_ID
+                )),
+              );
+
             },
             icon: Image.asset(
               'assets/images/heart.png',

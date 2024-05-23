@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:laboratorymodule/dashboard.dart';
 
-var ip = "192.168.18.5";
+var ip = "10.133.135.137";
 //var reportid;
 //fetching all tests
 
